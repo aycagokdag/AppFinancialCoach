@@ -21,12 +21,10 @@ final class UserManager {
             "user_id": user.uid,
             "date_created": user.date_created
         ]
-        if let email = user.email {
-            userData["email"] = email
-        }
+        userData["email"] = user.personalInfo.email
         Firestore.firestore().collection("users").document(user.uid).setData(userData, merge: false)
         
-        UserManager.shared.currentUser = UserProfileInfoModel(uid: user.uid, email: user.email ?? "")
+        UserManager.shared.currentUser = UserProfileInfoModel(uid: user.uid, email: user.personalInfo.email)
     
     }
     
@@ -51,9 +49,7 @@ final class UserManager {
                     // Initialize UserProfileInfoModel with the retrieved data
                     var userProfile = UserProfileInfoModel(
                         uid: userID,
-                        name: "",
-                        jobTitle: "",
-                        email: email,
+                        personalInfo: PersonalInfoModel(email: email),
                         date_created: dateCreated,
                         currentBalance: currentBalance,
                         expenses: [],
@@ -161,6 +157,31 @@ final class UserManager {
                     }
                     completion()
                 }
+            }
+        }
+    }
+    
+    func updateProfileData(completion: @escaping (Error?) -> Void) {
+        guard let userProfile = UserManager.shared.currentUser else {
+            completion(NSError(domain: "UserProfileError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Current user profile is nil"]))
+            return
+        }
+
+        let userDocumentRef = Firestore.firestore().collection("users").document(userProfile.uid)
+
+        let updatedFields: [String: Any] = [
+            "personalInfo.name": userProfile.personalInfo.name,
+            "personalInfo.profession": userProfile.personalInfo.profession,
+            "personalInfo.email": userProfile.personalInfo.email
+        ]
+
+        userDocumentRef.updateData(updatedFields) { error in
+            if let error = error {
+                print("Error updating user document: \(error.localizedDescription)")
+                completion(error)
+            } else {
+                print("User document updated successfully.")
+                completion(nil)
             }
         }
     }

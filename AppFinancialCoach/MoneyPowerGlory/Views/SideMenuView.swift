@@ -5,6 +5,7 @@ struct SideMenuView: View {
     @AppStorage("uid") var userID: String = ""
     @Binding var selectedSideMenuTab: Int
     @Binding var presentSideMenu: Bool
+    @State private var showingProfileView = false
     
     var body: some View {
         HStack {
@@ -17,8 +18,14 @@ struct SideMenuView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     ProfileImageView()
-                        .frame(height: 140)
-                        .padding(.bottom, 30)
+                    .frame(height: 140)
+                    .padding(.bottom, 30)
+                    .onTapGesture {
+                        showingProfileView = true
+                    }
+                    .sheet(isPresented: $showingProfileView) {
+                        ProfileView()
+                    }
                     
                     ForEach(SideMenuRowType.allCases, id: \.self){ row in
                         RowView(isSelected: selectedSideMenuTab == row.rawValue, imageName: row.iconName, title: row.title) {

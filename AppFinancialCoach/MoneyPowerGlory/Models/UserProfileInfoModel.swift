@@ -5,9 +5,7 @@ struct UserProfileInfoModel {
     static var shared: UserProfileInfoModel?
     
     let uid: String
-    var name: String
-    var jobTitle: String
-    let email: String?
+    var personalInfo: PersonalInfoModel
     var date_created: Date
     var currentBalance: Double
     var expenses: [ExpenseModel] // to store user's expenses
@@ -30,9 +28,7 @@ struct UserProfileInfoModel {
     
     init(uid: String, email: String) {
         self.uid = uid
-        self.name = ""
-        self.jobTitle = ""
-        self.email = email
+        self.personalInfo = PersonalInfoModel(email: email)
         self.date_created = Date()
         self.expenses = []
         self.incomes = []
@@ -41,11 +37,9 @@ struct UserProfileInfoModel {
         self.savings =  []
     }
     
-    init(uid: String, name: String, jobTitle: String, email: String, date_created: Date, currentBalance: Double, expenses: [ExpenseModel], incomes: [IncomeModel], savings: [SavingsModel], goals: [FinancialGoalModel]) {
+    init(uid: String, personalInfo: PersonalInfoModel, date_created: Date, currentBalance: Double, expenses: [ExpenseModel], incomes: [IncomeModel], savings: [SavingsModel], goals: [FinancialGoalModel]) {
         self.uid = uid
-        self.name = name
-        self.jobTitle = jobTitle
-        self.email = email
+        self.personalInfo = personalInfo
         self.date_created = date_created
         self.currentBalance = currentBalance
         self.expenses = expenses

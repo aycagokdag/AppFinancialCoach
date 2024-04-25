@@ -61,6 +61,10 @@
 		22DC7E802B96E332003F8F63 /* PlanFutureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC7E7F2B96E332003F8F63 /* PlanFutureViewController.swift */; };
 		22DC7E822B97C3B8003F8F63 /* FinancialGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC7E812B97C3B8003F8F63 /* FinancialGoalsView.swift */; };
 		22DC7E842B982A84003F8F63 /* FinancialGoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC7E832B982A84003F8F63 /* FinancialGoalModel.swift */; };
+		22E037C72BDA5C7A00D8A3C1 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E037C62BDA5C7A00D8A3C1 /* ProfileView.swift */; };
+		22E037C92BDA6E4600D8A3C1 /* PersonalInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E037C82BDA6E4600D8A3C1 /* PersonalInfoModel.swift */; };
+		22E037CB2BDA725E00D8A3C1 /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E037CA2BDA725E00D8A3C1 /* URLImageView.swift */; };
+		22E037CD2BDA72A300D8A3C1 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E037CC2BDA72A300D8A3C1 /* ImageLoader.swift */; };
 		22E325CA2B08F86600E4FD49 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E325C92B08F86600E4FD49 /* AddExpenseView.swift */; };
 		22E325D02B0A064800E4FD49 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E325CF2B0A064800E4FD49 /* UserManager.swift */; };
 		22E325D22B0A0BE500E4FD49 /* UserProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E325D12B0A0BE500E4FD49 /* UserProfileInfoModel.swift */; };
@@ -134,6 +138,10 @@
 		22DC7E7F2B96E332003F8F63 /* PlanFutureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFutureViewController.swift; sourceTree = "<group>"; };
 		22DC7E812B97C3B8003F8F63 /* FinancialGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialGoalsView.swift; sourceTree = "<group>"; };
 		22DC7E832B982A84003F8F63 /* FinancialGoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialGoalModel.swift; sourceTree = "<group>"; };
+		22E037C62BDA5C7A00D8A3C1 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		22E037C82BDA6E4600D8A3C1 /* PersonalInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoModel.swift; sourceTree = "<group>"; };
+		22E037CA2BDA725E00D8A3C1 /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
+		22E037CC2BDA72A300D8A3C1 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		22E325C92B08F86600E4FD49 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		22E325CF2B0A064800E4FD49 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		22E325D12B0A0BE500E4FD49 /* UserProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoModel.swift; sourceTree = "<group>"; };
@@ -214,6 +222,8 @@
 				228118792BB060D6005FC01A /* FinancesView.swift */,
 				22DBF3B12BBC194A00A511A2 /* StockSearchView.swift */,
 				22B1ADD42BC163730055E920 /* SettingsView.swift */,
+				22E037C62BDA5C7A00D8A3C1 /* ProfileView.swift */,
+				22E037CA2BDA725E00D8A3C1 /* URLImageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +233,7 @@
 			children = (
 				223327392B1EF587002ADF6A /* Utilities.swift */,
 				2276EF472B860FA000A5E67C /* ServerRequests.swift */,
+				22E037CC2BDA72A300D8A3C1 /* ImageLoader.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +320,7 @@
 				2281187B2BB06DC5005FC01A /* Response */,
 				2276EF4B2B86104200A5E67C /* Request */,
 				22E325D12B0A0BE500E4FD49 /* UserProfileInfoModel.swift */,
+				22E037C82BDA6E4600D8A3C1 /* PersonalInfoModel.swift */,
 				227245872B276016009048EE /* MLModel.swift */,
 				2288376B2B52D9CB0038ECFA /* IncomeModel.swift */,
 				2288376D2B52DA050038ECFA /* ExpenseModel.swift */,
@@ -484,6 +496,7 @@
 				221BCA462B21D89600B957BA /* AddIncomeView.swift in Sources */,
 				2281187D2BB06DDE005FC01A /* FuturePlanningResponse.swift in Sources */,
 				2276EF4A2B860FF000A5E67C /* TransactionModel.swift in Sources */,
+				22E037CB2BDA725E00D8A3C1 /* URLImageView.swift in Sources */,
 				2276EF4D2B86105000A5E67C /* CheckAnomalyRequestModel.swift in Sources */,
 				22D0DC4A2AFFA4290034F1B1 /* ContentView.swift in Sources */,
 				223303A22B944FE300207EFF /* deneme.swift in Sources */,
@@ -509,10 +522,13 @@
 				227245882B276016009048EE /* MLModel.swift in Sources */,
 				22BBDC712B57A0C8001BAA55 /* HomePageViewController.swift in Sources */,
 				22DBF3BA2BBC296500A511A2 /* SavingsModel.swift in Sources */,
+				22E037C92BDA6E4600D8A3C1 /* PersonalInfoModel.swift in Sources */,
 				22BBDC732B57A20C001BAA55 /* ExpenseBreakdownViewController.swift in Sources */,
 				2288376E2B52DA050038ECFA /* ExpenseModel.swift in Sources */,
 				2288376C2B52D9CB0038ECFA /* IncomeModel.swift in Sources */,
+				22E037CD2BDA72A300D8A3C1 /* ImageLoader.swift in Sources */,
 				22E325D02B0A064800E4FD49 /* UserManager.swift in Sources */,
+				22E037C72BDA5C7A00D8A3C1 /* ProfileView.swift in Sources */,
 				22DBF3B62BBC199600A511A2 /* StockSearchViewController.swift in Sources */,
 				22DC7E842B982A84003F8F63 /* FinancialGoalModel.swift in Sources */,
 				22DBF3B82BBC292000A511A2 /* StockResponse.swift in Sources */,
