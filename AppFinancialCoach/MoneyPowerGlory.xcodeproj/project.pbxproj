@@ -1,0 +1,912 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		221BCA462B21D89600B957BA /* AddIncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221BCA452B21D89600B957BA /* AddIncomeView.swift */; };
+		223303A22B944FE300207EFF /* deneme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223303A12B944FE300207EFF /* deneme.swift */; };
+		223303A42B946FE200207EFF /* DenemeBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223303A32B946FE200207EFF /* DenemeBar.swift */; };
+		223303A62B94742000207EFF /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223303A52B94742000207EFF /* CommonRequestModel.swift */; };
+		223327362B1EEF25002ADF6A /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223327352B1EEF25002ADF6A /* HomePageView.swift */; };
+		2233273A2B1EF587002ADF6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223327392B1EF587002ADF6A /* Utilities.swift */; };
+		22594D5E2B1933AC00BAFFA5 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 22594D5D2B1933AC00BAFFA5 /* SwiftUICharts */; };
+		227245882B276016009048EE /* MLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227245872B276016009048EE /* MLModel.swift */; };
+		2276EF482B860FA000A5E67C /* ServerRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EF472B860FA000A5E67C /* ServerRequests.swift */; };
+		2276EF4A2B860FF000A5E67C /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EF492B860FF000A5E67C /* TransactionModel.swift */; };
+		2276EF4D2B86105000A5E67C /* CheckAnomalyRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EF4C2B86105000A5E67C /* CheckAnomalyRequestModel.swift */; };
+		227EEE6F2B1F79ED0046D4AD /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227EEE6E2B1F79ED0046D4AD /* SideMenuView.swift */; };
+		227EEE712B1F7BFB0046D4AD /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227EEE702B1F7BFB0046D4AD /* SideMenu.swift */; };
+		2281187A2BB060D6005FC01A /* FinancesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228118792BB060D6005FC01A /* FinancesView.swift */; };
+		2281187D2BB06DDE005FC01A /* FuturePlanningResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2281187C2BB06DDE005FC01A /* FuturePlanningResponse.swift */; };
+		2284F2EC2B21E6AB008ADA4B /* IncomeBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F2EB2B21E6AB008ADA4B /* IncomeBreakdownView.swift */; };
+		2284F2EE2B21F5DD008ADA4B /* ExpenseBreakdownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2284F2ED2B21F5DD008ADA4B /* ExpenseBreakdownView.swift */; };
+		2288376C2B52D9CB0038ECFA /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376B2B52D9CB0038ECFA /* IncomeModel.swift */; };
+		2288376E2B52DA050038ECFA /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376D2B52DA050038ECFA /* ExpenseModel.swift */; };
+		228837702B52DB4E0038ECFA /* ExpenseCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376F2B52DB4E0038ECFA /* ExpenseCategoryModel.swift */; };
+		22A2CFEB2B06404C007593A2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CFEA2B06404C007593A2 /* LoginView.swift */; };
+		22A2CFF02B064E41007593A2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CFEF2B064E41007593A2 /* SignUpView.swift */; };
+		22A2CFF22B065643007593A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22A2CFF12B065643007593A2 /* GoogleService-Info.plist */; };
+		22A2CFF52B0658CF007593A2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2CFF42B0658CF007593A2 /* FirebaseAnalytics */; };
+		22A2CFF72B0658CF007593A2 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2CFF62B0658CF007593A2 /* FirebaseAnalyticsSwift */; };
+		22A2CFF92B0658CF007593A2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2CFF82B0658CF007593A2 /* FirebaseAuth */; };
+		22A2CFFB2B0658CF007593A2 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2CFFA2B0658CF007593A2 /* FirebaseDatabase */; };
+		22A2CFFD2B0658CF007593A2 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2CFFC2B0658CF007593A2 /* FirebaseDatabaseSwift */; };
+		22A2CFFF2B0658CF007593A2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2CFFE2B0658CF007593A2 /* FirebaseFirestore */; };
+		22A2D0012B0658CF007593A2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2D0002B0658CF007593A2 /* FirebaseFirestoreSwift */; };
+		22A2D0032B0658CF007593A2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2D0022B0658CF007593A2 /* FirebaseStorage */; };
+		22AF4C042B08DE6F00B3310D /* ExpenseCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF4C032B08DE6F00B3310D /* ExpenseCategoriesView.swift */; };
+		22B1ADD52BC163730055E920 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1ADD42BC163730055E920 /* SettingsView.swift */; };
+		22BBDC6B2B570A35001BAA55 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC6A2B570A35001BAA55 /* LoginViewController.swift */; };
+		22BBDC6D2B570BDC001BAA55 /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC6C2B570BDC001BAA55 /* QuestionnaireModel.swift */; };
+		22BBDC6F2B5711B0001BAA55 /* QuestionnaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC6E2B5711B0001BAA55 /* QuestionnaireViewController.swift */; };
+		22BBDC712B57A0C8001BAA55 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC702B57A0C8001BAA55 /* HomePageViewController.swift */; };
+		22BBDC732B57A20C001BAA55 /* ExpenseBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC722B57A20C001BAA55 /* ExpenseBreakdownViewController.swift */; };
+		22D0DC482AFFA4290034F1B1 /* MoneyPowerGloryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0DC472AFFA4290034F1B1 /* MoneyPowerGloryApp.swift */; };
+		22D0DC4A2AFFA4290034F1B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0DC492AFFA4290034F1B1 /* ContentView.swift */; };
+		22D0DC4C2AFFA42A0034F1B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D0DC4B2AFFA42A0034F1B1 /* Assets.xcassets */; };
+		22D0DC4F2AFFA42A0034F1B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22D0DC4E2AFFA42A0034F1B1 /* Preview Assets.xcassets */; };
+		22D0DC592AFFA42B0034F1B1 /* MoneyPowerGloryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0DC582AFFA42B0034F1B1 /* MoneyPowerGloryTests.swift */; };
+		22D0DC632AFFA42B0034F1B1 /* MoneyPowerGloryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0DC622AFFA42B0034F1B1 /* MoneyPowerGloryUITests.swift */; };
+		22D0DC652AFFA42B0034F1B1 /* MoneyPowerGloryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0DC642AFFA42B0034F1B1 /* MoneyPowerGloryUITestsLaunchTests.swift */; };
+		22DBF3B22BBC194A00A511A2 /* StockSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DBF3B12BBC194A00A511A2 /* StockSearchView.swift */; };
+		22DBF3B42BBC197600A511A2 /* StockSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DBF3B32BBC197600A511A2 /* StockSymbol.swift */; };
+		22DBF3B62BBC199600A511A2 /* StockSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DBF3B52BBC199600A511A2 /* StockSearchViewController.swift */; };
+		22DBF3B82BBC292000A511A2 /* StockResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DBF3B72BBC292000A511A2 /* StockResponse.swift */; };
+		22DBF3BA2BBC296500A511A2 /* SavingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DBF3B92BBC296500A511A2 /* SavingsModel.swift */; };
+		22DC7E7E2B96E274003F8F63 /* PlanFutureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC7E7D2B96E274003F8F63 /* PlanFutureView.swift */; };
+		22DC7E802B96E332003F8F63 /* PlanFutureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC7E7F2B96E332003F8F63 /* PlanFutureViewController.swift */; };
+		22DC7E822B97C3B8003F8F63 /* FinancialGoalsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC7E812B97C3B8003F8F63 /* FinancialGoalsView.swift */; };
+		22DC7E842B982A84003F8F63 /* FinancialGoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22DC7E832B982A84003F8F63 /* FinancialGoalModel.swift */; };
+		22E325CA2B08F86600E4FD49 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E325C92B08F86600E4FD49 /* AddExpenseView.swift */; };
+		22E325D02B0A064800E4FD49 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E325CF2B0A064800E4FD49 /* UserManager.swift */; };
+		22E325D22B0A0BE500E4FD49 /* UserProfileInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E325D12B0A0BE500E4FD49 /* UserProfileInfoModel.swift */; };
+		22E6C89A2B28E5B00039DADF /* QuestionnaireView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6C8992B28E5B00039DADF /* QuestionnaireView.swift */; };
+		22E6C89C2B2975BE0039DADF /* QueResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6C89B2B2975BE0039DADF /* QueResultView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22D0DC552AFFA42B0034F1B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22D0DC3C2AFFA4290034F1B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22D0DC432AFFA4290034F1B1;
+			remoteInfo = MoneyPowerGlory;
+		};
+		22D0DC5F2AFFA42B0034F1B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22D0DC3C2AFFA4290034F1B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22D0DC432AFFA4290034F1B1;
+			remoteInfo = MoneyPowerGlory;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		221BCA452B21D89600B957BA /* AddIncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeView.swift; sourceTree = "<group>"; };
+		223303A12B944FE300207EFF /* deneme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deneme.swift; sourceTree = "<group>"; };
+		223303A32B946FE200207EFF /* DenemeBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DenemeBar.swift; sourceTree = "<group>"; };
+		223303A52B94742000207EFF /* CommonRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequestModel.swift; sourceTree = "<group>"; };
+		223327352B1EEF25002ADF6A /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		223327392B1EF587002ADF6A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		227245872B276016009048EE /* MLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModel.swift; sourceTree = "<group>"; };
+		2276EF472B860FA000A5E67C /* ServerRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRequests.swift; sourceTree = "<group>"; };
+		2276EF492B860FF000A5E67C /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
+		2276EF4C2B86105000A5E67C /* CheckAnomalyRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAnomalyRequestModel.swift; sourceTree = "<group>"; };
+		227EEE6E2B1F79ED0046D4AD /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		227EEE702B1F7BFB0046D4AD /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
+		228118792BB060D6005FC01A /* FinancesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancesView.swift; sourceTree = "<group>"; };
+		2281187C2BB06DDE005FC01A /* FuturePlanningResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuturePlanningResponse.swift; sourceTree = "<group>"; };
+		2284F2EB2B21E6AB008ADA4B /* IncomeBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeBreakdownView.swift; sourceTree = "<group>"; };
+		2284F2ED2B21F5DD008ADA4B /* ExpenseBreakdownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBreakdownView.swift; sourceTree = "<group>"; };
+		2288376B2B52D9CB0038ECFA /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
+		2288376D2B52DA050038ECFA /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
+		2288376F2B52DB4E0038ECFA /* ExpenseCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModel.swift; sourceTree = "<group>"; };
+		22A2CFEA2B06404C007593A2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		22A2CFEF2B064E41007593A2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		22A2CFF12B065643007593A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22AF4C032B08DE6F00B3310D /* ExpenseCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoriesView.swift; sourceTree = "<group>"; };
+		22B1ADD42BC163730055E920 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		22BBDC6A2B570A35001BAA55 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		22BBDC6C2B570BDC001BAA55 /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
+		22BBDC6E2B5711B0001BAA55 /* QuestionnaireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewController.swift; sourceTree = "<group>"; };
+		22BBDC702B57A0C8001BAA55 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		22BBDC722B57A20C001BAA55 /* ExpenseBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseBreakdownViewController.swift; sourceTree = "<group>"; };
+		22D0DC442AFFA4290034F1B1 /* MoneyPowerGlory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyPowerGlory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D0DC472AFFA4290034F1B1 /* MoneyPowerGloryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyPowerGloryApp.swift; sourceTree = "<group>"; };
+		22D0DC492AFFA4290034F1B1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		22D0DC4B2AFFA42A0034F1B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22D0DC4E2AFFA42A0034F1B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		22D0DC542AFFA42B0034F1B1 /* MoneyPowerGloryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyPowerGloryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D0DC582AFFA42B0034F1B1 /* MoneyPowerGloryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyPowerGloryTests.swift; sourceTree = "<group>"; };
+		22D0DC5E2AFFA42B0034F1B1 /* MoneyPowerGloryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyPowerGloryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22D0DC622AFFA42B0034F1B1 /* MoneyPowerGloryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyPowerGloryUITests.swift; sourceTree = "<group>"; };
+		22D0DC642AFFA42B0034F1B1 /* MoneyPowerGloryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyPowerGloryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22DBF3B12BBC194A00A511A2 /* StockSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchView.swift; sourceTree = "<group>"; };
+		22DBF3B32BBC197600A511A2 /* StockSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSymbol.swift; sourceTree = "<group>"; };
+		22DBF3B52BBC199600A511A2 /* StockSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchViewController.swift; sourceTree = "<group>"; };
+		22DBF3B72BBC292000A511A2 /* StockResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockResponse.swift; sourceTree = "<group>"; };
+		22DBF3B92BBC296500A511A2 /* SavingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsModel.swift; sourceTree = "<group>"; };
+		22DC7E7D2B96E274003F8F63 /* PlanFutureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFutureView.swift; sourceTree = "<group>"; };
+		22DC7E7F2B96E332003F8F63 /* PlanFutureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanFutureViewController.swift; sourceTree = "<group>"; };
+		22DC7E812B97C3B8003F8F63 /* FinancialGoalsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialGoalsView.swift; sourceTree = "<group>"; };
+		22DC7E832B982A84003F8F63 /* FinancialGoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialGoalModel.swift; sourceTree = "<group>"; };
+		22E325C92B08F86600E4FD49 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		22E325CF2B0A064800E4FD49 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		22E325D12B0A0BE500E4FD49 /* UserProfileInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileInfoModel.swift; sourceTree = "<group>"; };
+		22E6C8992B28E5B00039DADF /* QuestionnaireView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireView.swift; sourceTree = "<group>"; };
+		22E6C89B2B2975BE0039DADF /* QueResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueResultView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22D0DC412AFFA4290034F1B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22594D5E2B1933AC00BAFFA5 /* SwiftUICharts in Frameworks */,
+				22A2CFFD2B0658CF007593A2 /* FirebaseDatabaseSwift in Frameworks */,
+				22A2CFF72B0658CF007593A2 /* FirebaseAnalyticsSwift in Frameworks */,
+				22A2CFF92B0658CF007593A2 /* FirebaseAuth in Frameworks */,
+				22A2D0012B0658CF007593A2 /* FirebaseFirestoreSwift in Frameworks */,
+				22A2CFFB2B0658CF007593A2 /* FirebaseDatabase in Frameworks */,
+				22A2D0032B0658CF007593A2 /* FirebaseStorage in Frameworks */,
+				22A2CFF52B0658CF007593A2 /* FirebaseAnalytics in Frameworks */,
+				22A2CFFF2B0658CF007593A2 /* FirebaseFirestore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22D0DC512AFFA42B0034F1B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22D0DC5B2AFFA42B0034F1B1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2276EF4B2B86104200A5E67C /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				2276EF4C2B86105000A5E67C /* CheckAnomalyRequestModel.swift */,
+				223303A52B94742000207EFF /* CommonRequestModel.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		2281187B2BB06DC5005FC01A /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				2281187C2BB06DDE005FC01A /* FuturePlanningResponse.swift */,
+				22DBF3B72BBC292000A511A2 /* StockResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		22A2CFE92B064036007593A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				22A2CFEA2B06404C007593A2 /* LoginView.swift */,
+				22A2CFEF2B064E41007593A2 /* SignUpView.swift */,
+				22AF4C032B08DE6F00B3310D /* ExpenseCategoriesView.swift */,
+				22E325C92B08F86600E4FD49 /* AddExpenseView.swift */,
+				223327352B1EEF25002ADF6A /* HomePageView.swift */,
+				227EEE6E2B1F79ED0046D4AD /* SideMenuView.swift */,
+				221BCA452B21D89600B957BA /* AddIncomeView.swift */,
+				2284F2EB2B21E6AB008ADA4B /* IncomeBreakdownView.swift */,
+				2284F2ED2B21F5DD008ADA4B /* ExpenseBreakdownView.swift */,
+				22E6C8992B28E5B00039DADF /* QuestionnaireView.swift */,
+				22E6C89B2B2975BE0039DADF /* QueResultView.swift */,
+				223303A12B944FE300207EFF /* deneme.swift */,
+				223303A32B946FE200207EFF /* DenemeBar.swift */,
+				22DC7E7D2B96E274003F8F63 /* PlanFutureView.swift */,
+				22DC7E812B97C3B8003F8F63 /* FinancialGoalsView.swift */,
+				228118792BB060D6005FC01A /* FinancesView.swift */,
+				22DBF3B12BBC194A00A511A2 /* StockSearchView.swift */,
+				22B1ADD42BC163730055E920 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		22A2CFEC2B06479A007593A2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				223327392B1EF587002ADF6A /* Utilities.swift */,
+				2276EF472B860FA000A5E67C /* ServerRequests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		22BBDC692B570A1D001BAA55 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				22BBDC6A2B570A35001BAA55 /* LoginViewController.swift */,
+				22BBDC6E2B5711B0001BAA55 /* QuestionnaireViewController.swift */,
+				22BBDC702B57A0C8001BAA55 /* HomePageViewController.swift */,
+				22BBDC722B57A20C001BAA55 /* ExpenseBreakdownViewController.swift */,
+				22DC7E7F2B96E332003F8F63 /* PlanFutureViewController.swift */,
+				22DBF3B52BBC199600A511A2 /* StockSearchViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		22D0DC3B2AFFA4290034F1B1 = {
+			isa = PBXGroup;
+			children = (
+				22D0DC462AFFA4290034F1B1 /* MoneyPowerGlory */,
+				22D0DC572AFFA42B0034F1B1 /* MoneyPowerGloryTests */,
+				22D0DC612AFFA42B0034F1B1 /* MoneyPowerGloryUITests */,
+				22D0DC452AFFA4290034F1B1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22D0DC452AFFA4290034F1B1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22D0DC442AFFA4290034F1B1 /* MoneyPowerGlory.app */,
+				22D0DC542AFFA42B0034F1B1 /* MoneyPowerGloryTests.xctest */,
+				22D0DC5E2AFFA42B0034F1B1 /* MoneyPowerGloryUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22D0DC462AFFA4290034F1B1 /* MoneyPowerGlory */ = {
+			isa = PBXGroup;
+			children = (
+				22BBDC692B570A1D001BAA55 /* Controllers */,
+				22E325CE2B0A062F00E4FD49 /* Firestore */,
+				22E325CB2B091CCA00E4FD49 /* Models */,
+				22A2CFF12B065643007593A2 /* GoogleService-Info.plist */,
+				22A2CFEC2B06479A007593A2 /* Extensions */,
+				22A2CFE92B064036007593A2 /* Views */,
+				22D0DC472AFFA4290034F1B1 /* MoneyPowerGloryApp.swift */,
+				22D0DC492AFFA4290034F1B1 /* ContentView.swift */,
+				22D0DC4B2AFFA42A0034F1B1 /* Assets.xcassets */,
+				22D0DC4D2AFFA42A0034F1B1 /* Preview Content */,
+				227EEE702B1F7BFB0046D4AD /* SideMenu.swift */,
+			);
+			path = MoneyPowerGlory;
+			sourceTree = "<group>";
+		};
+		22D0DC4D2AFFA42A0034F1B1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				22D0DC4E2AFFA42A0034F1B1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22D0DC572AFFA42B0034F1B1 /* MoneyPowerGloryTests */ = {
+			isa = PBXGroup;
+			children = (
+				22D0DC582AFFA42B0034F1B1 /* MoneyPowerGloryTests.swift */,
+			);
+			path = MoneyPowerGloryTests;
+			sourceTree = "<group>";
+		};
+		22D0DC612AFFA42B0034F1B1 /* MoneyPowerGloryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				22D0DC622AFFA42B0034F1B1 /* MoneyPowerGloryUITests.swift */,
+				22D0DC642AFFA42B0034F1B1 /* MoneyPowerGloryUITestsLaunchTests.swift */,
+			);
+			path = MoneyPowerGloryUITests;
+			sourceTree = "<group>";
+		};
+		22E325CB2B091CCA00E4FD49 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2281187B2BB06DC5005FC01A /* Response */,
+				2276EF4B2B86104200A5E67C /* Request */,
+				22E325D12B0A0BE500E4FD49 /* UserProfileInfoModel.swift */,
+				227245872B276016009048EE /* MLModel.swift */,
+				2288376B2B52D9CB0038ECFA /* IncomeModel.swift */,
+				2288376D2B52DA050038ECFA /* ExpenseModel.swift */,
+				2288376F2B52DB4E0038ECFA /* ExpenseCategoryModel.swift */,
+				22BBDC6C2B570BDC001BAA55 /* QuestionnaireModel.swift */,
+				2276EF492B860FF000A5E67C /* TransactionModel.swift */,
+				22DC7E832B982A84003F8F63 /* FinancialGoalModel.swift */,
+				22DBF3B32BBC197600A511A2 /* StockSymbol.swift */,
+				22DBF3B92BBC296500A511A2 /* SavingsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		22E325CE2B0A062F00E4FD49 /* Firestore */ = {
+			isa = PBXGroup;
+			children = (
+				22E325CF2B0A064800E4FD49 /* UserManager.swift */,
+			);
+			path = Firestore;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22D0DC432AFFA4290034F1B1 /* MoneyPowerGlory */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22D0DC682AFFA42B0034F1B1 /* Build configuration list for PBXNativeTarget "MoneyPowerGlory" */;
+			buildPhases = (
+				22D0DC402AFFA4290034F1B1 /* Sources */,
+				22D0DC412AFFA4290034F1B1 /* Frameworks */,
+				22D0DC422AFFA4290034F1B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MoneyPowerGlory;
+			packageProductDependencies = (
+				22A2CFF42B0658CF007593A2 /* FirebaseAnalytics */,
+				22A2CFF62B0658CF007593A2 /* FirebaseAnalyticsSwift */,
+				22A2CFF82B0658CF007593A2 /* FirebaseAuth */,
+				22A2CFFA2B0658CF007593A2 /* FirebaseDatabase */,
+				22A2CFFC2B0658CF007593A2 /* FirebaseDatabaseSwift */,
+				22A2CFFE2B0658CF007593A2 /* FirebaseFirestore */,
+				22A2D0002B0658CF007593A2 /* FirebaseFirestoreSwift */,
+				22A2D0022B0658CF007593A2 /* FirebaseStorage */,
+				22594D5D2B1933AC00BAFFA5 /* SwiftUICharts */,
+			);
+			productName = MoneyPowerGlory;
+			productReference = 22D0DC442AFFA4290034F1B1 /* MoneyPowerGlory.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22D0DC532AFFA42B0034F1B1 /* MoneyPowerGloryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22D0DC6B2AFFA42B0034F1B1 /* Build configuration list for PBXNativeTarget "MoneyPowerGloryTests" */;
+			buildPhases = (
+				22D0DC502AFFA42B0034F1B1 /* Sources */,
+				22D0DC512AFFA42B0034F1B1 /* Frameworks */,
+				22D0DC522AFFA42B0034F1B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22D0DC562AFFA42B0034F1B1 /* PBXTargetDependency */,
+			);
+			name = MoneyPowerGloryTests;
+			productName = MoneyPowerGloryTests;
+			productReference = 22D0DC542AFFA42B0034F1B1 /* MoneyPowerGloryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		22D0DC5D2AFFA42B0034F1B1 /* MoneyPowerGloryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22D0DC6E2AFFA42B0034F1B1 /* Build configuration list for PBXNativeTarget "MoneyPowerGloryUITests" */;
+			buildPhases = (
+				22D0DC5A2AFFA42B0034F1B1 /* Sources */,
+				22D0DC5B2AFFA42B0034F1B1 /* Frameworks */,
+				22D0DC5C2AFFA42B0034F1B1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22D0DC602AFFA42B0034F1B1 /* PBXTargetDependency */,
+			);
+			name = MoneyPowerGloryUITests;
+			productName = MoneyPowerGloryUITests;
+			productReference = 22D0DC5E2AFFA42B0034F1B1 /* MoneyPowerGloryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22D0DC3C2AFFA4290034F1B1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					22D0DC432AFFA4290034F1B1 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					22D0DC532AFFA42B0034F1B1 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 22D0DC432AFFA4290034F1B1;
+					};
+					22D0DC5D2AFFA42B0034F1B1 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 22D0DC432AFFA4290034F1B1;
+					};
+				};
+			};
+			buildConfigurationList = 22D0DC3F2AFFA4290034F1B1 /* Build configuration list for PBXProject "MoneyPowerGlory" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22D0DC3B2AFFA4290034F1B1;
+			packageReferences = (
+				22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				22594D5C2B1933AC00BAFFA5 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
+			productRefGroup = 22D0DC452AFFA4290034F1B1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22D0DC432AFFA4290034F1B1 /* MoneyPowerGlory */,
+				22D0DC532AFFA42B0034F1B1 /* MoneyPowerGloryTests */,
+				22D0DC5D2AFFA42B0034F1B1 /* MoneyPowerGloryUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22D0DC422AFFA4290034F1B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D0DC4F2AFFA42A0034F1B1 /* Preview Assets.xcassets in Resources */,
+				22D0DC4C2AFFA42A0034F1B1 /* Assets.xcassets in Resources */,
+				22A2CFF22B065643007593A2 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22D0DC522AFFA42B0034F1B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22D0DC5C2AFFA42B0034F1B1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22D0DC402AFFA4290034F1B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22DC7E7E2B96E274003F8F63 /* PlanFutureView.swift in Sources */,
+				22A2CFEB2B06404C007593A2 /* LoginView.swift in Sources */,
+				22A2CFF02B064E41007593A2 /* SignUpView.swift in Sources */,
+				2276EF482B860FA000A5E67C /* ServerRequests.swift in Sources */,
+				223303A42B946FE200207EFF /* DenemeBar.swift in Sources */,
+				221BCA462B21D89600B957BA /* AddIncomeView.swift in Sources */,
+				2281187D2BB06DDE005FC01A /* FuturePlanningResponse.swift in Sources */,
+				2276EF4A2B860FF000A5E67C /* TransactionModel.swift in Sources */,
+				2276EF4D2B86105000A5E67C /* CheckAnomalyRequestModel.swift in Sources */,
+				22D0DC4A2AFFA4290034F1B1 /* ContentView.swift in Sources */,
+				223303A22B944FE300207EFF /* deneme.swift in Sources */,
+				2284F2EE2B21F5DD008ADA4B /* ExpenseBreakdownView.swift in Sources */,
+				223327362B1EEF25002ADF6A /* HomePageView.swift in Sources */,
+				22DBF3B22BBC194A00A511A2 /* StockSearchView.swift in Sources */,
+				22BBDC6F2B5711B0001BAA55 /* QuestionnaireViewController.swift in Sources */,
+				22E6C89A2B28E5B00039DADF /* QuestionnaireView.swift in Sources */,
+				2233273A2B1EF587002ADF6A /* Utilities.swift in Sources */,
+				22DC7E822B97C3B8003F8F63 /* FinancialGoalsView.swift in Sources */,
+				2281187A2BB060D6005FC01A /* FinancesView.swift in Sources */,
+				2284F2EC2B21E6AB008ADA4B /* IncomeBreakdownView.swift in Sources */,
+				227EEE6F2B1F79ED0046D4AD /* SideMenuView.swift in Sources */,
+				22B1ADD52BC163730055E920 /* SettingsView.swift in Sources */,
+				228837702B52DB4E0038ECFA /* ExpenseCategoryModel.swift in Sources */,
+				22BBDC6B2B570A35001BAA55 /* LoginViewController.swift in Sources */,
+				22E325CA2B08F86600E4FD49 /* AddExpenseView.swift in Sources */,
+				227EEE712B1F7BFB0046D4AD /* SideMenu.swift in Sources */,
+				22AF4C042B08DE6F00B3310D /* ExpenseCategoriesView.swift in Sources */,
+				22BBDC6D2B570BDC001BAA55 /* QuestionnaireModel.swift in Sources */,
+				223303A62B94742000207EFF /* CommonRequestModel.swift in Sources */,
+				22DC7E802B96E332003F8F63 /* PlanFutureViewController.swift in Sources */,
+				227245882B276016009048EE /* MLModel.swift in Sources */,
+				22BBDC712B57A0C8001BAA55 /* HomePageViewController.swift in Sources */,
+				22DBF3BA2BBC296500A511A2 /* SavingsModel.swift in Sources */,
+				22BBDC732B57A20C001BAA55 /* ExpenseBreakdownViewController.swift in Sources */,
+				2288376E2B52DA050038ECFA /* ExpenseModel.swift in Sources */,
+				2288376C2B52D9CB0038ECFA /* IncomeModel.swift in Sources */,
+				22E325D02B0A064800E4FD49 /* UserManager.swift in Sources */,
+				22DBF3B62BBC199600A511A2 /* StockSearchViewController.swift in Sources */,
+				22DC7E842B982A84003F8F63 /* FinancialGoalModel.swift in Sources */,
+				22DBF3B82BBC292000A511A2 /* StockResponse.swift in Sources */,
+				22E6C89C2B2975BE0039DADF /* QueResultView.swift in Sources */,
+				22D0DC482AFFA4290034F1B1 /* MoneyPowerGloryApp.swift in Sources */,
+				22DBF3B42BBC197600A511A2 /* StockSymbol.swift in Sources */,
+				22E325D22B0A0BE500E4FD49 /* UserProfileInfoModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22D0DC502AFFA42B0034F1B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D0DC592AFFA42B0034F1B1 /* MoneyPowerGloryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22D0DC5A2AFFA42B0034F1B1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22D0DC632AFFA42B0034F1B1 /* MoneyPowerGloryUITests.swift in Sources */,
+				22D0DC652AFFA42B0034F1B1 /* MoneyPowerGloryUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22D0DC562AFFA42B0034F1B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22D0DC432AFFA4290034F1B1 /* MoneyPowerGlory */;
+			targetProxy = 22D0DC552AFFA42B0034F1B1 /* PBXContainerItemProxy */;
+		};
+		22D0DC602AFFA42B0034F1B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22D0DC432AFFA4290034F1B1 /* MoneyPowerGlory */;
+			targetProxy = 22D0DC5F2AFFA42B0034F1B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		22D0DC662AFFA42B0034F1B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22D0DC672AFFA42B0034F1B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22D0DC692AFFA42B0034F1B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyPowerGlory/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGlory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22D0DC6A2AFFA42B0034F1B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoneyPowerGlory/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGlory;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		22D0DC6C2AFFA42B0034F1B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGloryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyPowerGlory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoneyPowerGlory";
+			};
+			name = Debug;
+		};
+		22D0DC6D2AFFA42B0034F1B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGloryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyPowerGlory.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MoneyPowerGlory";
+			};
+			name = Release;
+		};
+		22D0DC6F2AFFA42B0034F1B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGloryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MoneyPowerGlory;
+			};
+			name = Debug;
+		};
+		22D0DC702AFFA42B0034F1B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGloryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MoneyPowerGlory;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22D0DC3F2AFFA4290034F1B1 /* Build configuration list for PBXProject "MoneyPowerGlory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22D0DC662AFFA42B0034F1B1 /* Debug */,
+				22D0DC672AFFA42B0034F1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22D0DC682AFFA42B0034F1B1 /* Build configuration list for PBXNativeTarget "MoneyPowerGlory" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22D0DC692AFFA42B0034F1B1 /* Debug */,
+				22D0DC6A2AFFA42B0034F1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22D0DC6B2AFFA42B0034F1B1 /* Build configuration list for PBXNativeTarget "MoneyPowerGloryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22D0DC6C2AFFA42B0034F1B1 /* Debug */,
+				22D0DC6D2AFFA42B0034F1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22D0DC6E2AFFA42B0034F1B1 /* Build configuration list for PBXNativeTarget "MoneyPowerGloryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22D0DC6F2AFFA42B0034F1B1 /* Debug */,
+				22D0DC702AFFA42B0034F1B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22594D5C2B1933AC00BAFFA5 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = exactVersion;
+				version = "2.0.0-beta.2";
+			};
+		};
+		22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22594D5D2B1933AC00BAFFA5 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22594D5C2B1933AC00BAFFA5 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+		22A2CFF42B0658CF007593A2 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		22A2CFF62B0658CF007593A2 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		22A2CFF82B0658CF007593A2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		22A2CFFA2B0658CF007593A2 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		22A2CFFC2B0658CF007593A2 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		22A2CFFE2B0658CF007593A2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		22A2D0002B0658CF007593A2 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		22A2D0022B0658CF007593A2 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22A2CFF32B0658CF007593A2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 22D0DC3C2AFFA4290034F1B1 /* Project object */;
+}
