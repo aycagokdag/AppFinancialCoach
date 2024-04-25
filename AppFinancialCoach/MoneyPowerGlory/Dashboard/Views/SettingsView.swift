@@ -28,9 +28,9 @@ struct SettingsView: View {
                     }
 
                     VStack(alignment: .leading) {
-                        TextField("Name", text: $userProfile.name)
-                        TextField("Job Title", text: $userProfile.jobTitle)
-                        Text("Email: \(userProfile.email ?? "Not Available")")
+                        TextField("Name", text: $userProfile.personalInfo.name)
+                        TextField("Job Title", text: $userProfile.personalInfo.profession)
+                        Text("Email: \(userProfile.personalInfo.email)")
                             .foregroundColor(.gray) // Display the email as non-editable
                     }
                 }
