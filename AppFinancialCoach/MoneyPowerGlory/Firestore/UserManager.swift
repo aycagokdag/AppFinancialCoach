@@ -40,7 +40,7 @@ final class UserManager {
             if let document = document, document.exists {
                 print("document is found")
                 let userData = document.data()
-                if let email = userData?["email"] as? String,
+                if  let personalData = userData?["personalInfo"] as? [String: Any],
                    let dateCreatedTimestamp = userData?["date_created"] as? Timestamp {
                     
                     let dateCreated = dateCreatedTimestamp.dateValue()
@@ -49,7 +49,15 @@ final class UserManager {
                     // Initialize UserProfileInfoModel with the retrieved data
                     var userProfile = UserProfileInfoModel(
                         uid: userID,
-                        personalInfo: PersonalInfoModel(email: email),
+                        personalInfo: PersonalInfoModel(
+                            profilePhotoURL: URL(string: personalData["profile_photo_url"] as? String ?? ""),
+                            profileScore: personalData["profile_score"] as? Int ?? 0,
+                            network: personalData["network"] as? [Double] ?? [],
+                            name: personalData["name"] as? String ?? "",
+                            profession: personalData["profession"] as? String ?? "",
+                            email: personalData["email"] as? String ?? "",
+                            age: personalData["age"] as? String ?? ""
+                        ),
                         date_created: dateCreated,
                         currentBalance: currentBalance,
                         expenses: [],
@@ -172,7 +180,8 @@ final class UserManager {
         let updatedFields: [String: Any] = [
             "personalInfo.name": userProfile.personalInfo.name,
             "personalInfo.profession": userProfile.personalInfo.profession,
-            "personalInfo.email": userProfile.personalInfo.email
+            "personalInfo.email": userProfile.personalInfo.email,
+            "personalInfo.age": userProfile.personalInfo.age,
         ]
 
         userDocumentRef.updateData(updatedFields) { error in

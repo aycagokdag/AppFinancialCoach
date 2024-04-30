@@ -4,12 +4,9 @@ struct HomePageView: View {
     
     @Binding var presentSideMenu: Bool
     @Binding var isHomePageSelected: Bool
+    @State private var navigateToStockSearch = false
     
     private let homeController = HomeViewController()
-    
-
-    
-    @State private var navigateToStockSearch = false // State to control navigation
             
     var body: some View {
         NavigationView {
@@ -29,7 +26,6 @@ struct HomePageView: View {
                     
                     Button {
                         isHomePageSelected.toggle()
-                        // This might need adjusting depending on your navigation logic
                     } label: {
                         Image(systemName: "plus")
                             .resizable()
@@ -38,7 +34,6 @@ struct HomePageView: View {
                     }
                 }
                 
-                // Navigation link (hidden)
                 NavigationLink(destination: StockSearchView(), isActive: $navigateToStockSearch) {
                     EmptyView()
                 }

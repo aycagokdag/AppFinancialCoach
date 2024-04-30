@@ -24,6 +24,7 @@
 		2288376C2B52D9CB0038ECFA /* IncomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376B2B52D9CB0038ECFA /* IncomeModel.swift */; };
 		2288376E2B52DA050038ECFA /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376D2B52DA050038ECFA /* ExpenseModel.swift */; };
 		228837702B52DB4E0038ECFA /* ExpenseCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376F2B52DB4E0038ECFA /* ExpenseCategoryModel.swift */; };
+		229D740C2BDFF79100EFAC93 /* AnomalyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D740B2BDFF79100EFAC93 /* AnomalyDetailView.swift */; };
 		22A2CFEB2B06404C007593A2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CFEA2B06404C007593A2 /* LoginView.swift */; };
 		22A2CFF02B064E41007593A2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CFEF2B064E41007593A2 /* SignUpView.swift */; };
 		22A2CFF22B065643007593A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22A2CFF12B065643007593A2 /* GoogleService-Info.plist */; };
@@ -37,6 +38,7 @@
 		22A2D0032B0658CF007593A2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 22A2D0022B0658CF007593A2 /* FirebaseStorage */; };
 		22AF4C042B08DE6F00B3310D /* ExpenseCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF4C032B08DE6F00B3310D /* ExpenseCategoriesView.swift */; };
 		22B1ADD52BC163730055E920 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1ADD42BC163730055E920 /* SettingsView.swift */; };
+		22B31DB52BDC2F0C00DC457F /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B31DB42BDC2F0C00DC457F /* temp.swift */; };
 		22BBDC6B2B570A35001BAA55 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC6A2B570A35001BAA55 /* LoginViewController.swift */; };
 		22BBDC6D2B570BDC001BAA55 /* QuestionnaireModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC6C2B570BDC001BAA55 /* QuestionnaireModel.swift */; };
 		22BBDC6F2B5711B0001BAA55 /* QuestionnaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDC6E2B5711B0001BAA55 /* QuestionnaireViewController.swift */; };
@@ -103,11 +105,13 @@
 		2288376B2B52D9CB0038ECFA /* IncomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeModel.swift; sourceTree = "<group>"; };
 		2288376D2B52DA050038ECFA /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		2288376F2B52DB4E0038ECFA /* ExpenseCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModel.swift; sourceTree = "<group>"; };
+		229D740B2BDFF79100EFAC93 /* AnomalyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnomalyDetailView.swift; sourceTree = "<group>"; };
 		22A2CFEA2B06404C007593A2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22A2CFEF2B064E41007593A2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		22A2CFF12B065643007593A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22AF4C032B08DE6F00B3310D /* ExpenseCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoriesView.swift; sourceTree = "<group>"; };
 		22B1ADD42BC163730055E920 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		22B31DB42BDC2F0C00DC457F /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		22BBDC6A2B570A35001BAA55 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22BBDC6C2B570BDC001BAA55 /* QuestionnaireModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireModel.swift; sourceTree = "<group>"; };
 		22BBDC6E2B5711B0001BAA55 /* QuestionnaireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +328,7 @@
 				22E325C92B08F86600E4FD49 /* AddExpenseView.swift */,
 				221BCA452B21D89600B957BA /* AddIncomeView.swift */,
 				22AF4C032B08DE6F00B3310D /* ExpenseCategoriesView.swift */,
+				229D740B2BDFF79100EFAC93 /* AnomalyDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				22D0DC4B2AFFA42A0034F1B1 /* Assets.xcassets */,
 				22D0DC4D2AFFA42A0034F1B1 /* Preview Content */,
 				227EEE702B1F7BFB0046D4AD /* SideMenu.swift */,
+				22B31DB42BDC2F0C00DC457F /* temp.swift */,
 			);
 			path = MoneyPowerGlory;
 			sourceTree = "<group>";
@@ -663,6 +669,7 @@
 				22BBDC6F2B5711B0001BAA55 /* QuestionnaireViewController.swift in Sources */,
 				22E6C89A2B28E5B00039DADF /* QuestionnaireView.swift in Sources */,
 				2233273A2B1EF587002ADF6A /* Utilities.swift in Sources */,
+				229D740C2BDFF79100EFAC93 /* AnomalyDetailView.swift in Sources */,
 				22DC7E822B97C3B8003F8F63 /* FinancialGoalsView.swift in Sources */,
 				2281187A2BB060D6005FC01A /* FinancesView.swift in Sources */,
 				2284F2EC2B21E6AB008ADA4B /* IncomeBreakdownView.swift in Sources */,
@@ -682,6 +689,7 @@
 				22BBDC732B57A20C001BAA55 /* ExpenseBreakdownViewController.swift in Sources */,
 				2288376E2B52DA050038ECFA /* ExpenseModel.swift in Sources */,
 				2288376C2B52D9CB0038ECFA /* IncomeModel.swift in Sources */,
+				22B31DB52BDC2F0C00DC457F /* temp.swift in Sources */,
 				22E037CD2BDA72A300D8A3C1 /* ImageLoader.swift in Sources */,
 				22E325D02B0A064800E4FD49 /* UserManager.swift in Sources */,
 				22E037C72BDA5C7A00D8A3C1 /* ProfileView.swift in Sources */,
@@ -778,7 +786,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -832,7 +840,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -908,7 +916,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGloryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -927,7 +935,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ayca.MoneyPowerGloryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

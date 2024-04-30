@@ -5,14 +5,18 @@ struct ProfileView: View {
     @State private var name: String = ""
     @State private var profession: String = ""
     @State private var email: String = ""
+    @State private var age: String = ""
 
     @State private var editingName = false
     @State private var editingProfession = false
     @State private var editingEmail = false
+    @State private var editingAge = false
+    @State private var showAlert = false
+    @State private var sliderValue: Double = 0.8
 
     var body: some View {
         Form {
-            Section(header: Text("Profile Photo")) {
+            Section(header: Text("User Info")) {
                 if let url = userProfile?.personalInfo.profilePhotoURL {
                     URLImageView(url: url)
                 } else {
@@ -27,17 +31,35 @@ struct ProfileView: View {
                                     .stroke(Color("darkPurple").opacity(0.5), lineWidth: 10)
                             )
                             .cornerRadius(50)
+                            .padding()
                         Spacer()
+                        Button(action: {}){
+                            Image(systemName: "pencil")
+                                .imageScale(.medium)
+                                .foregroundColor(.gray)
+                        }
                     }
+                    
+                    GradientSlider(value:sliderValue )
+                                   .padding()
                 }
             }
             Section(header: Text("User Info")) {
                 editableTextField(title: "Name", value: $name, editing: $editingName)
                 editableTextField(title: "Job Title", value: $profession, editing: $editingProfession)
                 editableTextField(title: "Email", value: $email, editing: $editingEmail)
+                editableTextField(title: "Age", value: $age, editing: $editingAge)
+                
             }
             Button("Update Profile") {
                 updateProfile()
+            }
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Profile Updated"),
+                    message: Text("Your profile is updated succesfully."),
+                    dismissButton: .default(Text("OK"))
+                )
             }
         }
         .onAppear {
@@ -51,6 +73,7 @@ struct ProfileView: View {
             name = currentUser.personalInfo.name
             profession = currentUser.personalInfo.profession
             email = currentUser.personalInfo.email
+            age = currentUser.personalInfo.age
         }
     }
 
@@ -63,13 +86,18 @@ struct ProfileView: View {
         currentUser.personalInfo.name = name
         currentUser.personalInfo.profession = profession
         currentUser.personalInfo.email = email
+        currentUser.personalInfo.age = age
         UserManager.shared.currentUser = currentUser
 
         UserManager.shared.updateProfileData() { error in
             if let error = error {
                 print("Error updating user document: \(error.localizedDescription)")
             } else {
-                print("Profile updated")
+                showAlert = true
+                editingName = false
+                editingAge = false
+                editingProfession = false
+                editingEmail = false
             }
         }
         
@@ -80,11 +108,17 @@ struct ProfileView: View {
 
 @ViewBuilder
 private func editableTextField(title: String, value: Binding<String>, editing: Binding<Bool>) -> some View {
-    VStack(alignment: .leading) {
+    ZStack(alignment: .leading) {
         Text(title)
+            .foregroundColor(value.wrappedValue.isEmpty && !editing.wrappedValue ? Color(.placeholderText) : .accentColor)
             .aspectRatio(contentMode: .fit)
+            .offset(y: value.wrappedValue.isEmpty && !editing.wrappedValue ? 0 : -40)
+            .scaleEffect(value.wrappedValue.isEmpty && !editing.wrappedValue ? 1 : 0.8, anchor: .leading)
             .font(.headline)
-        HStack {
+            .padding(.top, 20)
+            .padding(.bottom, 30)
+        Spacer()
+        HStack  {
             if editing.wrappedValue {
                 TextField(title, text: value)
                     .font(.footnote)
@@ -94,9 +128,7 @@ private func editableTextField(title: String, value: Binding<String>, editing: B
                 Text(value.wrappedValue)
                     .font(.footnote)
             }
-            
             Spacer()
-            
             Button(action: {
                 editing.wrappedValue.toggle()
             }) {
@@ -105,5 +137,28 @@ private func editableTextField(title: String, value: Binding<String>, editing: B
                     .foregroundColor(.gray)
             }
         }
+    }
+    .padding(.top, 15)
+    .animation(.default)
+}
+
+struct GradientSlider: View {
+    var value: Double // The value should be a normalized number between 0 and 1
+
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .fill(LinearGradient(gradient: Gradient(colors: [.green, .red]), startPoint: .leading, endPoint: .trailing))
+                    .frame(height: 8)
+                    .cornerRadius(4)
+                
+                Circle()
+                    .fill(Color.black)
+                    .frame(width: 15, height: 15)
+                    .position(x: CGFloat(value) * geometry.size.width, y: geometry.size.height / 2)
+            }
+        }
+        .frame(height: 20)
     }
 }
