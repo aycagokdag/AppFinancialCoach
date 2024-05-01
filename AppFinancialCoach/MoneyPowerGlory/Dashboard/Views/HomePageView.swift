@@ -5,6 +5,8 @@ struct HomePageView: View {
     @Binding var presentSideMenu: Bool
     @Binding var isHomePageSelected: Bool
     @State private var navigateToStockSearch = false
+    @State private var budgetCreate = false
+    
     
     private let homeController = HomeViewController()
             
@@ -47,6 +49,33 @@ struct HomePageView: View {
                         .padding()
                         .foregroundColor(Color("textColor"))
                     Text(String(format: "%.2f %@", dailyLimit, "₺"))
+                    
+                    if !userProfile.plannedBudget.isEmpty {
+                        let chartData = userProfile.plannedBudget.map { name, amount in
+                            ExpenseData(name: name, amount: amount/5, color: colorForCategory(name))
+                        }
+                        
+                        DonutChartView(expensesByCategory: chartData)
+                            .frame(height: 360)
+                            .padding()
+                    } else {
+                        Text("You have not planned your budget yet.")
+                        Button("Create one here!"){
+                            self.budgetCreate = true
+                        }
+                            .foregroundColor(.white)
+                            .bold()
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color("darkPurple"))
+                            )
+                        
+                    }
+                    if !userProfile.goals.isEmpty {
+                        DashboardGoalsWidget(financialGoals: userProfile.goals)
+                    }
                 }
                 Spacer()
                 Button("Add Savings") {
