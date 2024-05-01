@@ -13,11 +13,9 @@ struct IncomeBreakdownView: View {
                     
                     if let userProfile = UserManager.shared.currentUser {
                         ForEach(userProfile.incomes, id: \.transactionId) { income in
+                            Divider()
                             IncomeRowView(income: income)
                                 .padding()
-                                .background(Color("backgroundColor"))
-                                .cornerRadius(10)
-                                .padding(.horizontal)
                         }
                     } else {
                         Text("No income to display yet...")
@@ -36,20 +34,35 @@ struct IncomeRowView: View {
         HStack {
             VStack(alignment: .leading, spacing: 4) {
                 Text(income.incomeName)
-                    .font(.headline)
-                    .foregroundColor(ColorPalette.textColor)
-
+                    .font(.subheadline)
+                    .bold()
+                    .lineLimit(1)
+                    .foregroundColor(Color("textColor"))
+                
+                Text("\(formattedDate())")
+                    .font(.subheadline)
+                    .foregroundColor(Color("textColor"))
+                
                 Text("Fixed: \(income.isFixedIncome ? "Yes" : "No")")
                     .font(.subheadline)
-                    .foregroundColor(ColorPalette.gray)
+                    .foregroundColor(Color("textColor"))
             }
 
             Spacer()
 
             Text(String(format: "%.2f %@", income.amount, "₺"))
-                .font(.headline)
-                .foregroundColor(ColorPalette.textColor)
+                .font(.footnote)
+                .opacity(0.7)
+                .lineLimit(1)
+                .foregroundColor(Color("textColor"))
         }
+    }
+    
+    private func formattedDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        return dateFormatter.string(from: income.date)
     }
 }
 
