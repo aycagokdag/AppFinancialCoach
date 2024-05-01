@@ -5,21 +5,18 @@ enum SideMenuRowType: Int, CaseIterable{
     case home = 0
     case Finances
     case FinancialGoals
-    case Questionnaire
     case PlanFuture
     
     var title: String{
         switch self {
         case .home:
-            return "Home"
+            return "Home Page"
         case .Finances:
-            return "Finances"
+            return "My Finances"
         case .FinancialGoals:
-            return "Financial Goals"
-        case .Questionnaire:
-            return "Questionnaire"
+            return "My Goals"
         case .PlanFuture:
-            return "Plan Future"
+            return "Plan Future Budget"
         }
     }
     
@@ -31,8 +28,6 @@ enum SideMenuRowType: Int, CaseIterable{
             return "square.and.arrow.down"
         case .FinancialGoals:
             return "house.fill"
-        case .Questionnaire:
-            return "questionmark.square.dashed"
         case .PlanFuture:
             return "figure.run"
         }

@@ -77,10 +77,8 @@ struct ContentView: View {
                                     .tag(1)
                                 FinancialGoalsView(presentSideMenu: $presentSideMenu)
                                     .tag(2)
-                                QuestionnaireView(presentSideMenu: $presentSideMenu)
-                                    .tag(3)
                                 PlanFutureView(presentSideMenu: $presentSideMenu, predictedExpenses: [:], savingPerMonth: 0, expenses: [ : ])
-                                    .tag(4)
+                                    .tag(3)
                             }
                             
                             SideMenu(isShowing: $presentSideMenu, content: AnyView(SideMenuView(selectedSideMenuTab: $selectedSideMenuTab, presentSideMenu: $presentSideMenu)))

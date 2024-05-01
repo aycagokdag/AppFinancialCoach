@@ -6,6 +6,7 @@ struct ProfileView: View {
     @State private var profession: String = ""
     @State private var email: String = ""
     @State private var age: String = ""
+    @State private var riskToleranceScore: Int?
 
     @State private var editingName = false
     @State private var editingProfession = false
@@ -39,10 +40,54 @@ struct ProfileView: View {
                                 .foregroundColor(.gray)
                         }
                     }
-                    
-                    GradientSlider(value:sliderValue )
-                                   .padding()
                 }
+                if riskToleranceScore != nil {
+                    VStack(alignment: .leading){
+                        Text("Risk Tolerance Score")
+                            .font(.subheadline)
+                        GradientSlider(value: Double(riskToleranceScore!))
+                            .padding()
+                        HStack {
+                           Spacer()
+                           Button("Take the test again") {
+                               QuestionnaireView(presentSideMenu: .constant(false))
+                           }
+                           .foregroundColor(.accentColor)
+                           .font(.footnote)
+                           .frame(width: 150, height: 30)
+                           .background(
+                               RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(.white))
+                           )
+                           .overlay(
+                               RoundedRectangle(cornerRadius: 8)
+                                   .stroke(Color.black, lineWidth: 0.5)
+                           )
+                           Spacer()
+                       }
+                    }
+                } else {
+                    HStack{
+                        Text("Take the test to calculate your tolarance score!")
+                            .font(.footnote)
+                        Spacer()
+                        Button("Take the test!"){
+                            QuestionnaireView(presentSideMenu: .constant(false))
+                        }
+                            .foregroundColor(.accentColor)
+                            .font(.footnote)
+                            .frame(width: 150, height: 30)
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                 .fill(Color(.white))
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.black, lineWidth: 0.5)
+                            )
+                    }
+                }
+            
             }
             Section(header: Text("User Info")) {
                 editableTextField(title: "Name", value: $name, editing: $editingName)
@@ -74,6 +119,7 @@ struct ProfileView: View {
             profession = currentUser.personalInfo.profession
             email = currentUser.personalInfo.email
             age = currentUser.personalInfo.age
+            riskToleranceScore = currentUser.personalInfo.profileScore
         }
     }
 

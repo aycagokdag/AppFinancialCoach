@@ -12,6 +12,7 @@ struct UserProfileInfoModel {
     var incomes: [IncomeModel] // to store user's incomes
     var goals: [FinancialGoalModel]
     var savings: [SavingsModel]
+    var plannedBudget: [String: Double]
     
     var dailySpendingLimit: Double { // will be calculated dynamically each time we access it
         let currentDate = Date()
@@ -35,9 +36,10 @@ struct UserProfileInfoModel {
         self.goals = []
         self.currentBalance = 0.0
         self.savings =  []
+        self.plannedBudget = [:]
     }
     
-    init(uid: String, personalInfo: PersonalInfoModel, date_created: Date, currentBalance: Double, expenses: [ExpenseModel], incomes: [IncomeModel], savings: [SavingsModel], goals: [FinancialGoalModel]) {
+    init(uid: String, personalInfo: PersonalInfoModel, date_created: Date, currentBalance: Double, expenses: [ExpenseModel], incomes: [IncomeModel], savings: [SavingsModel], goals: [FinancialGoalModel], plannedBudget: [String: Double]) {
         self.uid = uid
         self.personalInfo = personalInfo
         self.date_created = date_created
@@ -46,7 +48,7 @@ struct UserProfileInfoModel {
         self.incomes = incomes
         self.goals = goals
         self.savings = savings
-        
+        self.plannedBudget = plannedBudget
     }
     
     /*
