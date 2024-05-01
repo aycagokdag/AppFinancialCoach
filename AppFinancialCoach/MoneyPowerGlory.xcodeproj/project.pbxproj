@@ -11,6 +11,7 @@
 		223303A62B94742000207EFF /* CommonRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223303A52B94742000207EFF /* CommonRequestModel.swift */; };
 		223327362B1EEF25002ADF6A /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223327352B1EEF25002ADF6A /* HomePageView.swift */; };
 		2233273A2B1EF587002ADF6A /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223327392B1EF587002ADF6A /* Utilities.swift */; };
+		2256D2E22BE20CC800C33B32 /* DashboardGoalsWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2256D2E12BE20CC800C33B32 /* DashboardGoalsWidget.swift */; };
 		22594D5E2B1933AC00BAFFA5 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 22594D5D2B1933AC00BAFFA5 /* SwiftUICharts */; };
 		2276EF482B860FA000A5E67C /* ServerRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EF472B860FA000A5E67C /* ServerRequests.swift */; };
 		2276EF4A2B860FF000A5E67C /* TransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2276EF492B860FF000A5E67C /* TransactionModel.swift */; };
@@ -93,6 +94,7 @@
 		223303A52B94742000207EFF /* CommonRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonRequestModel.swift; sourceTree = "<group>"; };
 		223327352B1EEF25002ADF6A /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		223327392B1EF587002ADF6A /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		2256D2E12BE20CC800C33B32 /* DashboardGoalsWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardGoalsWidget.swift; sourceTree = "<group>"; };
 		2276EF472B860FA000A5E67C /* ServerRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRequests.swift; sourceTree = "<group>"; };
 		2276EF492B860FF000A5E67C /* TransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionModel.swift; sourceTree = "<group>"; };
 		2276EF4C2B86105000A5E67C /* CheckAnomalyRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAnomalyRequestModel.swift; sourceTree = "<group>"; };
@@ -359,6 +361,7 @@
 				223327352B1EEF25002ADF6A /* HomePageView.swift */,
 				227EEE6E2B1F79ED0046D4AD /* SideMenuView.swift */,
 				22B1ADD42BC163730055E920 /* SettingsView.swift */,
+				2256D2E12BE20CC800C33B32 /* DashboardGoalsWidget.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 				227EEE6F2B1F79ED0046D4AD /* SideMenuView.swift in Sources */,
 				22B1ADD52BC163730055E920 /* SettingsView.swift in Sources */,
 				228837702B52DB4E0038ECFA /* ExpenseCategoryModel.swift in Sources */,
+				2256D2E22BE20CC800C33B32 /* DashboardGoalsWidget.swift in Sources */,
 				22BBDC6B2B570A35001BAA55 /* LoginViewController.swift in Sources */,
 				22E325CA2B08F86600E4FD49 /* AddExpenseView.swift in Sources */,
 				227EEE712B1F7BFB0046D4AD /* SideMenu.swift in Sources */,
