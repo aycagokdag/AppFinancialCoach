@@ -43,6 +43,7 @@ func checkAnomalies(userId: String, expense: ExpenseModel, showAnomalyDialog: Bi
                             showAnomalyDialog.wrappedValue = true // Show dialog if anomaly is detected
                             expenseToAdd.wrappedValue = expense // Hold the expense to add later
                         } else {
+                            showAnomalyDialog.wrappedValue = true // to be deleted
                             addExpense(expense) // Add expense directly if no anomaly
                         }
                     } else {
@@ -98,5 +99,41 @@ func futurePlanning(userId: String, completion: @escaping (FuturePlanningRespons
        }
     }
     
+    task.resume()
+}
+
+
+func clusterUser(userId: String) {
+    guard let url = URL(string: "http://127.0.0.1:5000/cluster_new_user") else {
+        print("Invalid URL")
+        return
+    }
+
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+    let requestBody = CommonRequestModel(userId: userId)
+
+    do {
+        let requestBodyData = try JSONEncoder().encode(requestBody)
+        request.httpBody = requestBodyData
+    } catch {
+        print("Error encoding request body: \(error)")
+        return
+    }
+
+    let task = URLSession.shared.dataTask(with: request) { _, response, error in
+        if let error = error {
+            print("Error making request: \(error)")
+            return
+        }
+
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+            print("Unexpected response status code: \(httpResponse.statusCode)")
+            return
+        }
+    }
+
     task.resume()
 }
