@@ -11,10 +11,15 @@ from sklearn.preprocessing import RobustScaler
 import sys
 from collections import defaultdict
 from pprint import pprint
+from joblib import dump, load
 
 
 def detect_anomalies(expenses_list, new_expense):
     expenses = pd.DataFrame(expenses_list)
+
+    print("new expense")
+    print(new_expense.expenseCategory)
+    print(new_expense.expenseAmount)
 
     # Create a defaultdict to store expenses for each category
     df = defaultdict(list)
@@ -46,6 +51,7 @@ def detect_anomalies(expenses_list, new_expense):
 
     #  StandardScaler transforms data such that each feature (expense category) has a mean of 0 and a standard deviation of 1.
     data_for_model = np.array(df[new_expense.expenseCategory]).reshape(-1, 1)
+    print(data_for_model)
     scaler = StandardScaler()
     scaled_data = scaler.fit_transform(data_for_model)
     input_dim = scaled_data.shape[1]
@@ -59,12 +65,15 @@ def detect_anomalies(expenses_list, new_expense):
     autoencoder.fit(scaled_data, scaled_data, epochs=100,
                     batch_size=32, shuffle=True)
 
-    prediction = autoencoder.predict([new_expense.expenseAmount])
-    mse = np.mean(
-        np.power([new_expense.expenseAmount] - prediction, 2), axis=1)
-    mean_mse = np.mean(mse)
-    std_mse = np.std(mse)
-    mse_threshold = mean_mse + 2 * std_mse
+    new_expense_scaled = scaler.transform([[new_expense.expenseAmount]])
+
+    print("new_expense_scaled ", new_expense_scaled)
+
+    prediction = autoencoder.predict([new_expense_scaled])
+
+    mse = np.mean(np.power(new_expense_scaled - prediction, 2), axis=1)
+
+    mse_threshold = np.percentile(mse, 95)
     is_anomaly = mse > mse_threshold
     is_anomaly_list = is_anomaly.tolist()
     print("is anomaly?", is_anomaly_list[0])
@@ -251,3 +260,24 @@ def forcasted_expenses(expenses_list, incomes_list, goals):
     print("suggested_expenses")
     print(suggested_expenses)
     return suggested_expenses
+
+
+# Clustering a new user into an existing cluster.
+# Their cluster is determined based on their data to provide them tailored advice,
+# based on their spending patterns and personal information
+
+def new_user_cluster(average_expense, average_income, goals, profile_score, current_balance):
+    goalScore = required_monthly_savings(goals) / average_income
+    print("goalScore", goalScore)
+    print("current_balance", current_balance)
+    print("average_expense", average_expense)
+    print("average_income", average_income)
+    print("profile_score", profile_score)
+    new_user = {'currentBalance': current_balance, 'totalExpenses': average_expense, 'averageIncome': average_income,
+                'goalScore': goalScore, 'totalSavings': 6000, 'riskProfileScore': profile_score}
+    new_user_df = pd.DataFrame([new_user])
+    new_user_scaled = load('scaler.joblib').transform(new_user_df)
+
+    # Predict the cluster for the new user using the loaded model
+    new_user_cluster = load('dbscan.joblib').fit_predict(new_user_scaled)
+    print("The new user belongs to cluster:", new_user_cluster[0])

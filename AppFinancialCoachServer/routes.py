@@ -1,6 +1,6 @@
 from flask import request, jsonify
-from firebase_service import fetch_user_expenses, fetch_user_goals, fetch_user_incomes
-from methods import detect_anomalies, budget_planning
+from firebase_service import fetch_user_expenses, fetch_user_goals, fetch_user_incomes, fetch_user_profile_info, fetch_current_balance
+from methods import detect_anomalies, budget_planning, new_user_cluster
 from Models.CheckAnomalyRequestModel import CheckAnomalyRequestModel
 from datetime import datetime, timedelta
 import pytz
@@ -31,6 +31,33 @@ def filter_last_5_months(items):
                       item['date'].replace(tzinfo=utc) <= last_day_of_latest_expense_month]
 
     return filtered_items
+
+
+def calculate_average_per_month(items):
+    filtered_items = filter_last_5_months(items)
+    transaction_by_month = {}
+
+    for item in filtered_items:
+        month_key = item['date'].strftime('%Y-%m')
+        if month_key not in transaction_by_month:
+            transaction_by_month[month_key] = []
+        transaction_by_month[month_key].append(item['amount'])
+
+    #print("transaction by month: \n")
+    # pprint(transaction_by_month)
+
+    # Calculate the total sum of all transactions and the number of months
+    total_sum = sum(sum(transactions)
+                    for transactions in transaction_by_month.values())
+    number_of_months = len(transaction_by_month)
+
+    # Avoid division by zero
+    if number_of_months > 0:
+        average_amount = total_sum / number_of_months
+    else:
+        average_amount = 0
+
+    return average_amount
 
 
 def register_routes(app):
@@ -79,3 +106,21 @@ def register_routes(app):
         suggested_list = budget_planning(expenses_list, incomes_list, goals)
 
         return jsonify(suggested_list)
+
+    @app.route('/cluster_new_user', methods=['POST'])
+    def cluster_new_user():
+        data = request.json
+        user_id = data.get('userId')
+
+        average_expense = calculate_average_per_month(
+            fetch_user_expenses(user_id))
+        average_income = calculate_average_per_month(
+            fetch_user_incomes(user_id))
+        goals = fetch_user_goals(user_id)
+
+        profile_score = fetch_user_profile_info(user_id).get("profileScore")
+        current_balance = fetch_current_balance(user_id)
+
+        new_user_cluster(average_expense, average_income,
+                         goals, profile_score, current_balance)
+        return '', 204
