@@ -20,9 +20,31 @@ struct GoalView: View {
     let goal: FinancialGoalModel
     
     var body: some View {
-        VStack(alignment: .leading){
+        VStack{
+            HStack {
+               Spacer()
+
             Text(goal.goalName)
                 .font(.headline)
+            Spacer()
+            
+            Button(action: {
+                // Edit goal logic
+                print("Edit goal")
+            }) {
+                Image(systemName: "pencil")
+                    .frame(width: 20, height: 20)
+                    .foregroundColor(Color.black)
+                    .padding(4)
+            }
+            .background(Color.white)
+            .clipShape(Circle())
+            .overlay(
+                Circle().stroke(Color.gray, lineWidth: 0.2)
+            )
+            
+            }
+            .padding(.trailing, 5)
             Text("$\(String(format: "%.2f", goal.amountToBeSaved))")
                 .font(.subheadline)
                 .padding(.bottom)
@@ -31,14 +53,13 @@ struct GoalView: View {
             Text("\(formattedDate(from: goal.dueDate))")
                 .font(.footnote)
         }
-        .frame(width: 160, height: 130)
-        .padding(.bottom)
-        .background(Color.gray.opacity(0.05))
-        .cornerRadius(10)
+        .padding(.all, 5)
+        .frame(width: 160, height: 180)
+        .cornerRadius(5)
         .shadow(radius: 0)
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.black, lineWidth: 0.5)
+            RoundedRectangle(cornerRadius: 5)
+                .stroke(Color.gray, lineWidth: 0.5)
         )
 
     }
