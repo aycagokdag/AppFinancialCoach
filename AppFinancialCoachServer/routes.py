@@ -1,6 +1,8 @@
 from flask import request, jsonify
 from firebase_service import fetch_user_expenses, fetch_user_goals, fetch_user_incomes, fetch_user_profile_info, fetch_current_balance
-from methods import detect_anomalies, budget_planning, new_user_cluster
+from budget_planning import budget_planning
+from detect_anomalies import detect_anomalies
+from new_user_cluster import new_user_cluster
 from Models.CheckAnomalyRequestModel import CheckAnomalyRequestModel
 from datetime import datetime, timedelta
 import pytz
@@ -83,6 +85,7 @@ def register_routes(app):
         print("DONE ROUTE CHECK ANOMALIES")
         if expenses_list:
             is_anomaly = detect_anomalies(expenses_list, new_expense)
+            is_anomaly = bool(is_anomaly)
         else:
             return jsonify({"isAnomaly": False}), 200
 

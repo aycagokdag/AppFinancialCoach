@@ -1,83 +1,10 @@
 import pandas as pd
-from statistics import stdev
-from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import KMeans
-import numpy as np
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Dense
 from datetime import datetime
 import pytz
-from sklearn.preprocessing import RobustScaler
 import sys
-from collections import defaultdict
 from pprint import pprint
 from joblib import dump, load
-
-
-def detect_anomalies(expenses_list, new_expense):
-    expenses = pd.DataFrame(expenses_list)
-
-    print("new expense")
-    print(new_expense.expenseCategory)
-    print(new_expense.expenseAmount)
-
-    # Create a defaultdict to store expenses for each category
-    df = defaultdict(list)
-    months = sorted(expenses['date'].dt.strftime('%b').unique())
-
-    # Iterate over expenses and organize them by category and month
-    df = defaultdict(lambda: defaultdict(float))
-
-    # Iterate over expenses and sum up expenses for each category and month
-    for index, expense in expenses.iterrows():
-        month = expense['date'].strftime('%b')
-        category = expense['parentCategory']
-        amount = expense['amount']
-        df[category][month] += amount
-
-    # Convert defaultdict to a regular dictionary
-    df = {category: [expenses.get(month, 0) for month in months]
-          for category, expenses in df.items()}
-
-    # Add missing categories with zero expenses for each month
-    for category, expenses_list in df.items():
-        if len(expenses_list) < len(months):
-            expenses_list.extend([0] * (len(months) - len(expenses_list)))
-
-    # Add months as the first row in the dictionary
-    df = {'Month': months, **df}
-
-    pprint(df)
-
-    #  StandardScaler transforms data such that each feature (expense category) has a mean of 0 and a standard deviation of 1.
-    data_for_model = np.array(df[new_expense.expenseCategory]).reshape(-1, 1)
-    print(data_for_model)
-    scaler = StandardScaler()
-    scaled_data = scaler.fit_transform(data_for_model)
-    input_dim = scaled_data.shape[1]
-    input_layer = Input(shape=(input_dim,))
-    encoded = Dense(2, activation='relu')(input_layer)
-    decoded = Dense(input_dim, activation='sigmoid')(encoded)
-    autoencoder = Model(input_layer, decoded)
-    autoencoder.compile(optimizer='adam', loss='mean_squared_error')
-
-    # Train the autoencoder
-    autoencoder.fit(scaled_data, scaled_data, epochs=100,
-                    batch_size=32, shuffle=True)
-
-    new_expense_scaled = scaler.transform([[new_expense.expenseAmount]])
-
-    print("new_expense_scaled ", new_expense_scaled)
-
-    prediction = autoencoder.predict([new_expense_scaled])
-
-    mse = np.mean(np.power(new_expense_scaled - prediction, 2), axis=1)
-
-    mse_threshold = np.percentile(mse, 95)
-    is_anomaly = mse > mse_threshold
-    is_anomaly_list = is_anomaly.tolist()
-    print("is anomaly?", is_anomaly_list[0])
-    return is_anomaly_list[0]
+from utils import required_monthly_savings, calculate_net_savings
 
 
 importance_dict = {
@@ -100,7 +27,7 @@ def suggest_budget_cuts(expenses_list, required_savings, current_savings, months
     inferred from historical expenses variability.
     """
     # Calculate flexibility scores from historical data
-    #flexibility_scores = calculate_flexibility_scores(expenses_list)
+    # flexibility_scores = calculate_flexibility_scores(expenses_list)
 
     additional_savings_needed = required_savings - current_savings / months
     if additional_savings_needed <= 0:
@@ -128,32 +55,6 @@ def suggest_budget_cuts(expenses_list, required_savings, current_savings, months
     print("adjustments: ",  adjustments)
 
     return adjustments
-
-
-def months_until(goal_date):
-    now_utc = datetime.now(pytz.UTC)  # Makes datetime offset-aware in UTC
-    return (goal_date - now_utc).days // 30
-
-
-def required_monthly_savings(goals):
-    """
-    Calculates monthly minimum amount of money to be saved in order to meet goals
-    """
-    monthly_savings_required = 0
-    for goal in goals:
-        save_amount = goal['amountToBeSaved'] / months_until(goal['dueDate'])
-        monthly_savings_required += save_amount
-        print("Monthly savings required: ", monthly_savings_required)
-    return monthly_savings_required
-
-
-def calculate_net_savings(incomes_list, expenses_list):
-    """
-    Calculates income - expense to find money surplus
-    """
-    total_income = sum(item['amount'] for item in incomes_list)
-    total_expenses = sum(item['amount'] for item in expenses_list)
-    return total_income - total_expenses
 
 
 def evaluateFinancialSituation(expenses_list, incomes_list, goals):
@@ -217,6 +118,47 @@ def dynamic_cut_percentage(category, expenses_list):
     return min(0.1, max(0.01, cut_percentage))
 
 
+def get_current_expense_breakdown(expenses_list):
+    categorized_expenses = {}
+
+    for expense in expenses_list:
+        month_year_string = expense["date"].strftime("%Y-%m")
+
+        if month_year_string not in categorized_expenses:
+            categorized_expenses[month_year_string] = {}
+
+        if expense["parentCategory"] not in categorized_expenses[month_year_string]:
+            categorized_expenses[month_year_string][expense["parentCategory"]] = [
+            ]
+
+        categorized_expenses[month_year_string][expense["parentCategory"]].append(
+            expense)
+
+    monthly_spending_by_category = {}
+
+    for month_year, expenses_by_category in categorized_expenses.items():
+        monthly_spending_by_category[month_year] = {}
+
+        for parent_category, expenses in expenses_by_category.items():
+            total_spending = sum(expense["amount"] for expense in expenses)
+            monthly_spending_by_category[month_year][parent_category] = total_spending
+
+    total_spending_by_category = {}
+
+    for _, spending_by_category in monthly_spending_by_category.items():
+        for category, spending in spending_by_category.items():
+            if category not in total_spending_by_category:
+                total_spending_by_category[category] = 0.0
+            total_spending_by_category[category] += spending
+
+    for category, spending in total_spending_by_category.items():
+        total_spending_by_category[category] /= 5
+
+    print("total spending by category", total_spending_by_category)
+
+    return total_spending_by_category
+
+
 def budget_planning(expenses_list, incomes_list, goals):
 
     response = {
@@ -234,11 +176,12 @@ def budget_planning(expenses_list, incomes_list, goals):
             expenses_list, incomes_list, goals)
 
     total_adjustments = 0
+    current_expense_breakdown = get_current_expense_breakdown(expenses_list)
+
+    print("adjustments here:")
+    pprint(adjustments)
     for category, amount in adjustments.items():
-        # Assuming expenses_list is a list of dicts with 'category' and 'amount'
-        original_amount = next(
-            (item['amount'] for item in expenses_list if item['parentCategory'] == category), 0)
-        # Ensure non-negative
+        original_amount = current_expense_breakdown.get(category, 0)
         adjusted_amount = max(0, original_amount + amount)
         response["plannedExpenses"][category] = adjusted_amount
         print("\n")
@@ -260,24 +203,3 @@ def forcasted_expenses(expenses_list, incomes_list, goals):
     print("suggested_expenses")
     print(suggested_expenses)
     return suggested_expenses
-
-
-# Clustering a new user into an existing cluster.
-# Their cluster is determined based on their data to provide them tailored advice,
-# based on their spending patterns and personal information
-
-def new_user_cluster(average_expense, average_income, goals, profile_score, current_balance):
-    goalScore = required_monthly_savings(goals) / average_income
-    print("goalScore", goalScore)
-    print("current_balance", current_balance)
-    print("average_expense", average_expense)
-    print("average_income", average_income)
-    print("profile_score", profile_score)
-    new_user = {'currentBalance': current_balance, 'totalExpenses': average_expense, 'averageIncome': average_income,
-                'goalScore': goalScore, 'totalSavings': 6000, 'riskProfileScore': profile_score}
-    new_user_df = pd.DataFrame([new_user])
-    new_user_scaled = load('scaler.joblib').transform(new_user_df)
-
-    # Predict the cluster for the new user using the loaded model
-    new_user_cluster = load('dbscan.joblib').fit_predict(new_user_scaled)
-    print("The new user belongs to cluster:", new_user_cluster[0])
