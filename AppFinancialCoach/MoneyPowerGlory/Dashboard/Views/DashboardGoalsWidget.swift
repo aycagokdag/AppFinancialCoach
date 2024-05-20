@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct DashboardGoalsWidget: View {
-    var financialGoals:  [FinancialGoalModel]
+    var financialGoals: [FinancialGoalModel]
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 10) {
+            HStack(spacing: 15) {
                 ForEach(financialGoals, id: \.goalId) { goal in
                     GoalView(goal: goal)
                 }
@@ -15,53 +15,38 @@ struct DashboardGoalsWidget: View {
     }
 }
 
-
 struct GoalView: View {
     let goal: FinancialGoalModel
     
     var body: some View {
-        VStack{
-            HStack {
-               Spacer()
-
+        VStack(spacing: 10) {
             Text(goal.goalName)
                 .font(.headline)
-            Spacer()
+                .padding(.vertical, 5)
+                .padding(.horizontal, 10)
+                .background(Color.blue.opacity(0.1))
+                .cornerRadius(10)
             
-            Button(action: {
-                // Edit goal logic
-                print("Edit goal")
-            }) {
-                Image(systemName: "pencil")
-                    .frame(width: 20, height: 20)
-                    .foregroundColor(Color.black)
-                    .padding(4)
-            }
-            .background(Color.white)
-            .clipShape(Circle())
-            .overlay(
-                Circle().stroke(Color.gray, lineWidth: 0.2)
-            )
-            
-            }
-            .padding(.trailing, 5)
             Text("$\(String(format: "%.2f", goal.amountToBeSaved))")
-                .font(.subheadline)
-                .padding(.bottom)
-            Text("Due Date:")
-                .font(.footnote)
-            Text("\(formattedDate(from: goal.dueDate))")
-                .font(.footnote)
+                .font(.title2)
+                .bold()
+                .foregroundColor(Color.green)
+            
+            VStack {
+                Text("Due Date:")
+                    .font(.footnote)
+                    .foregroundColor(Color.gray)
+                Text("\(formattedDate(from: goal.dueDate))")
+                    .font(.footnote)
+                    .foregroundColor(Color.gray)
+            }
+            .padding(.top, 5)
         }
-        .padding(.all, 5)
-        .frame(width: 160, height: 180)
-        .cornerRadius(5)
-        .shadow(radius: 0)
-        .overlay(
-            RoundedRectangle(cornerRadius: 5)
-                .stroke(Color.gray, lineWidth: 0.5)
-        )
-
+        .padding()
+        .frame(width: 180, height: 200)
+        .background(Color.white)
+        .cornerRadius(15)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 5)
     }
     
     private func formattedDate(from date: Date) -> String {

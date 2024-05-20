@@ -79,27 +79,30 @@ struct SideMenuView: View {
     
     func ProfileImageView() -> some View{
         VStack(alignment: .center){
-            HStack{
-                Spacer()
-                Image("profile-image")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 50)
-                            .stroke(Color("darkPurple").opacity(0.5), lineWidth: 10)
-                    )
-                    .cornerRadius(50)
-                Spacer()
+            
+            if let userProfile = UserManager.shared.currentUser {
+                HStack{
+                    Spacer()
+                    Image("profile-image")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 50)
+                                .stroke(Color("darkPurple").opacity(0.5), lineWidth: 10)
+                        )
+                        .cornerRadius(50)
+                    Spacer()
+                }
+                
+                Text(userProfile.personalInfo.name)
+                    .font(.system(size: 18, weight: .bold))
+                    .foregroundColor(.black)
+                
+                Text(userProfile.personalInfo.profession)
+                    .font(.system(size: 14, weight: .semibold))
+                    .foregroundColor(.black.opacity(0.5))
             }
-            
-            Text("Ayca Gökdağ")
-                .font(.system(size: 18, weight: .bold))
-                .foregroundColor(.black)
-            
-            Text("IOS Developer")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.black.opacity(0.5))
         }
     }
     

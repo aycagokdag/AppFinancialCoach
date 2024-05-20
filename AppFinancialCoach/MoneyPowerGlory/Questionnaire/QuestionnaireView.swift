@@ -6,7 +6,6 @@ struct QuestionnaireView: View {
     @State private var userScore = Score(impulsive: 0, spender: 0, planner: 0, investor: 0, saver: 0)
     @State private var showScore = false
     @State private var selectedOption: String?
-    @Binding var presentSideMenu: Bool
     
     private let controller = QuestionnaireViewController()
 
@@ -14,21 +13,18 @@ struct QuestionnaireView: View {
         NavigationView {
             VStack(alignment: .leading, spacing: 20) {
                 if showScore {
-                    VStack(alignment: .leading, spacing: 10) {
-                       Text("Your Score:")
-                           .font(.title)
-                           .bold()
-                       Text("Impulsive: \(userScore.impulsive)")
-                       Text("Spender: \(userScore.spender)")
-                       Text("Planner: \(userScore.planner)")
-                       Text("Investor: \(userScore.investor)")
-                       Text("Saver: \(userScore.saver)")
-                   }
-                   .frame(maxWidth: .infinity, alignment: .leading)
-                   .padding()
-                   .background(Color("darkPurple"))
-                   .foregroundColor(Color.white)
-                   .cornerRadius(10)
+                   scoreView
+                    
+                    Button("Save the Results") {
+                        updateUserScore(riskTolerance: Double(userScore.investor) / 50.0 * 10.0)
+                    }
+                    .bold()
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color("darkPurple"))
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.top, 20)
                    
                    Button("Take the Test Again") {
                        resetTest()
@@ -46,24 +42,45 @@ struct QuestionnaireView: View {
            }
            .padding()
            .frame(maxWidth: .infinity, alignment: .leading)
-           .navigationBarItems(leading:
-               Button(action: {
-                   presentSideMenu.toggle()
-               }) {
-                   Image(systemName: "text.justify.leading")
-                       .resizable()
-                       .frame(width: 20, height: 20)
-                       .foregroundColor(Color("textColor"))
-               }
-           )
        }
     }
+    
+    private var scoreView: some View {
+          VStack(alignment: .leading, spacing: 10) {
+              Text("Your Score:")
+                  .font(.title)
+                  .bold()
+              Text("Impulsive: \(userScore.impulsive)")
+              Text("Spender: \(userScore.spender)")
+              Text("Planner: \(userScore.planner)")
+              Text("Investor: \(userScore.investor)")
+              Text("Saver: \(userScore.saver)")
+              let riskTolerance = Double(userScore.investor) / 50.0 * 10.0
+              Text("Risk Tolerance: \(Int(riskTolerance)) / 10")
+          }
+      }
+   
+    private func updateUserScore(riskTolerance: Double) {
+          guard var currentUser = UserManager.shared.currentUser else {
+              print("No current user found")
+              return
+          }
+          currentUser.personalInfo.profileScore = riskTolerance
+          UserManager.shared.currentUser = currentUser
+          UserManager.shared.updateProfileData() { error in
+              if let error = error {
+                  print("Failed to update profile data: \(error.localizedDescription)")
+              } else {
+                  print("Profile data updated with new risk tolerance score.")
+              }
+          }
+      }
 
     private var questionSection: some View {
         Group {
+            Spacer()
             Text(questions[currentQuestionIndex].text)
                 .font(.title2)
-                .bold()
                 .padding(.bottom, 10)
 
             ForEach(questions[currentQuestionIndex].options, id: \.self) { option in
@@ -74,15 +91,19 @@ struct QuestionnaireView: View {
                    HStack {
                        Text(option)
                            .padding()
+                           .font(.subheadline)
                        Spacer()
                    }
                    .frame(maxWidth: .infinity)
-                   .background(self.selectedOption == option ? Color("darkPink") : Color("darkPurple"))
-                   .foregroundColor(.white)
-                   .cornerRadius(10)
+                   .background(self.selectedOption == option ? Color("darkPink") : Color(.white))
+                   .foregroundColor(.black)
+                   .overlay(
+                       RoundedRectangle(cornerRadius: 1)
+                           .stroke(Color.black, lineWidth: 0.5)
+                   )
                }
            }
-
+            Spacer()
             Button(action: {
                self.goToNextQuestion()
            }) {
@@ -112,11 +133,5 @@ struct QuestionnaireView: View {
         userScore = Score(impulsive: 0, spender: 0, planner: 0, investor: 0, saver: 0)
         showScore = false
         selectedOption = nil
-    }
-}
-
-struct QuestionnaireView_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionnaireView(presentSideMenu: .constant(false))
     }
 }
