@@ -13,6 +13,8 @@ struct UserProfileInfoModel {
     var goals: [FinancialGoalModel]
     var savings: [SavingsModel]
     var plannedBudget: [String: Double]
+    var clusterNo: Int?
+    var adviceRatings: [Int: [String: Int]]
     
     var dailySpendingLimit: Double { // will be calculated dynamically each time we access it
         let currentDate = Date()
@@ -37,9 +39,11 @@ struct UserProfileInfoModel {
         self.currentBalance = 0.0
         self.savings =  []
         self.plannedBudget = [:]
+        self.clusterNo = 0
+        self.adviceRatings = [:]
     }
     
-    init(uid: String, personalInfo: PersonalInfoModel, date_created: Date, currentBalance: Double, expenses: [ExpenseModel], incomes: [IncomeModel], savings: [SavingsModel], goals: [FinancialGoalModel], plannedBudget: [String: Double]) {
+    init(uid: String, personalInfo: PersonalInfoModel, date_created: Date, currentBalance: Double, expenses: [ExpenseModel], incomes: [IncomeModel], savings: [SavingsModel], goals: [FinancialGoalModel], plannedBudget: [String: Double], clusterNo: Int, adviceRatings: [Int: [String: Int]]) {
         self.uid = uid
         self.personalInfo = personalInfo
         self.date_created = date_created
@@ -49,6 +53,8 @@ struct UserProfileInfoModel {
         self.goals = goals
         self.savings = savings
         self.plannedBudget = plannedBudget
+        self.clusterNo = clusterNo
+        self.adviceRatings = adviceRatings
     }
     
     /*
@@ -81,6 +87,12 @@ struct UserProfileInfoModel {
     mutating func addSaving(saving: SavingsModel) {
            savings.append(saving)
        }
-
+    
+    mutating func updateRating(adviceId: Int, category: String, rating: Int) {
+          if adviceRatings[adviceId] == nil {
+              adviceRatings[adviceId] = [:]
+          }
+          adviceRatings[adviceId]?[category] = rating
+      }
 }
 

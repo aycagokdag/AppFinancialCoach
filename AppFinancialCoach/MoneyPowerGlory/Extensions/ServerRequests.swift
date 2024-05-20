@@ -137,3 +137,42 @@ func clusterUser(userId: String) {
 
     task.resume()
 }
+
+
+
+func fetchFinancialAdvice(userId: String, completion: @escaping (String) -> Void) {
+    guard let url = URL(string: "http://127.0.0.1:5000/generate_advice") else { return }
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    
+    let requestBody: [String: Any] = ["user_id": userId]
+    
+    request.httpBody = try? JSONSerialization.data(withJSONObject: requestBody, options: [])
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        if let error = error {
+            print("Error fetching financial advice: \(error.localizedDescription)")
+            return
+        }
+        
+        guard let data = data else {
+            print("No data received")
+            return
+        }
+        
+        do {
+            let result = try JSONDecoder().decode([String: String].self, from: data)
+            if let advice = result["advice"] {
+                DispatchQueue.main.async {
+                    completion(advice)
+                }
+            }
+        } catch {
+            print("Error decoding financial advice: \(error.localizedDescription)")
+        }
+    }
+    
+    task.resume()
+}
+

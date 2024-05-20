@@ -26,6 +26,8 @@
 		2288376E2B52DA050038ECFA /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376D2B52DA050038ECFA /* ExpenseModel.swift */; };
 		228837702B52DB4E0038ECFA /* ExpenseCategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2288376F2B52DB4E0038ECFA /* ExpenseCategoryModel.swift */; };
 		229D740C2BDFF79100EFAC93 /* AnomalyDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D740B2BDFF79100EFAC93 /* AnomalyDetailView.swift */; };
+		22A07E2F2BF10E0E004CEAF0 /* AdviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A07E2E2BF10E0E004CEAF0 /* AdviceViewModel.swift */; };
+		22A07E312BF10E4C004CEAF0 /* FinancialAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A07E302BF10E4C004CEAF0 /* FinancialAdvice.swift */; };
 		22A2CFEB2B06404C007593A2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CFEA2B06404C007593A2 /* LoginView.swift */; };
 		22A2CFF02B064E41007593A2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A2CFEF2B064E41007593A2 /* SignUpView.swift */; };
 		22A2CFF22B065643007593A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22A2CFF12B065643007593A2 /* GoogleService-Info.plist */; };
@@ -108,6 +110,8 @@
 		2288376D2B52DA050038ECFA /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
 		2288376F2B52DB4E0038ECFA /* ExpenseCategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryModel.swift; sourceTree = "<group>"; };
 		229D740B2BDFF79100EFAC93 /* AnomalyDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnomalyDetailView.swift; sourceTree = "<group>"; };
+		22A07E2E2BF10E0E004CEAF0 /* AdviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceViewModel.swift; sourceTree = "<group>"; };
+		22A07E302BF10E4C004CEAF0 /* FinancialAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialAdvice.swift; sourceTree = "<group>"; };
 		22A2CFEA2B06404C007593A2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		22A2CFEF2B064E41007593A2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		22A2CFF12B065643007593A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -424,6 +428,23 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
+		22A07E2C2BF10DE2004CEAF0 /* TailoredAdvice */ = {
+			isa = PBXGroup;
+			children = (
+				22A07E2D2BF10DFB004CEAF0 /* Models */,
+			);
+			path = TailoredAdvice;
+			sourceTree = "<group>";
+		};
+		22A07E2D2BF10DFB004CEAF0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22A07E2E2BF10E0E004CEAF0 /* AdviceViewModel.swift */,
+				22A07E302BF10E4C004CEAF0 /* FinancialAdvice.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		22A2CFEC2B06479A007593A2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +479,7 @@
 		22D0DC462AFFA4290034F1B1 /* MoneyPowerGlory */ = {
 			isa = PBXGroup;
 			children = (
+				22A07E2C2BF10DE2004CEAF0 /* TailoredAdvice */,
 				22E325CE2B0A062F00E4FD49 /* Firestore */,
 				22A2CFF12B065643007593A2 /* GoogleService-Info.plist */,
 				22A2CFEC2B06479A007593A2 /* Extensions */,
@@ -661,6 +683,7 @@
 				22A2CFF02B064E41007593A2 /* SignUpView.swift in Sources */,
 				2276EF482B860FA000A5E67C /* ServerRequests.swift in Sources */,
 				221BCA462B21D89600B957BA /* AddIncomeView.swift in Sources */,
+				22A07E312BF10E4C004CEAF0 /* FinancialAdvice.swift in Sources */,
 				2281187D2BB06DDE005FC01A /* FuturePlanningResponse.swift in Sources */,
 				2276EF4A2B860FF000A5E67C /* TransactionModel.swift in Sources */,
 				22E037CB2BDA725E00D8A3C1 /* URLImageView.swift in Sources */,
@@ -682,6 +705,7 @@
 				2256D2E22BE20CC800C33B32 /* DashboardGoalsWidget.swift in Sources */,
 				22BBDC6B2B570A35001BAA55 /* LoginViewController.swift in Sources */,
 				22E325CA2B08F86600E4FD49 /* AddExpenseView.swift in Sources */,
+				22A07E2F2BF10E0E004CEAF0 /* AdviceViewModel.swift in Sources */,
 				227EEE712B1F7BFB0046D4AD /* SideMenu.swift in Sources */,
 				22AF4C042B08DE6F00B3310D /* ExpenseCategoriesView.swift in Sources */,
 				22BBDC6D2B570BDC001BAA55 /* QuestionnaireModel.swift in Sources */,
@@ -862,6 +886,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MoneyPowerGlory/Preview Content\"";
+				DEVELOPMENT_TEAM = L86Y4N5SC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -891,6 +916,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MoneyPowerGlory/Preview Content\"";
+				DEVELOPMENT_TEAM = L86Y4N5SC2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -45,13 +45,24 @@ final class UserManager {
                     
                     let dateCreated = dateCreatedTimestamp.dateValue()
                     let currentBalance = userData?["currentBalance"] as? Double ?? 0.0
+                    let clusterNo = userData?["clusterNo"] as? Int ?? 0
+                    
+                    var adviceRatings: [Int: [String: Int]] = [:]
+                    if let adviceRatingsData = userData?["adviceRatings"] as? [String: [String: Int]] {
+                        for (adviceIdString, ratings) in adviceRatingsData {
+                            if let adviceId = Int(adviceIdString) {
+                                adviceRatings[adviceId] = ratings
+                            }
+                        }
+                    }
+
                     
                     // Initialize UserProfileInfoModel with the retrieved data
                     var userProfile = UserProfileInfoModel(
                         uid: userID,
                         personalInfo: PersonalInfoModel(
                             profilePhotoURL: URL(string: personalData["profile_photo_url"] as? String ?? ""),
-                            profileScore: personalData["profile_score"] as? Int ?? 0,
+                            profileScore: personalData["profileScore"] as? Double ?? 0.0,
                             network: personalData["network"] as? [Double] ?? [],
                             name: personalData["name"] as? String ?? "",
                             profession: personalData["profession"] as? String ?? "",
@@ -63,7 +74,10 @@ final class UserManager {
                         expenses: [],
                         incomes: [],
                         savings: [],
-                        goals: []
+                        goals: [],
+                        plannedBudget: [ : ],
+                        clusterNo: clusterNo,
+                        adviceRatings: adviceRatings
                     )
                     
                     if let expensesData = userData?["expenses"] as? [[String: Any]] {
@@ -71,7 +85,7 @@ final class UserManager {
                         userProfile.expenses = expenses
                     }
                     
-                    // Fetch incomes if they exist in the user data
+                    
                     if let incomesData = userData?["incomes"] as? [[String: Any]] {
                         let incomes = incomesData.map { IncomeModel(data: $0) }
                         userProfile.incomes = incomes
@@ -80,6 +94,11 @@ final class UserManager {
                     if let goalsData = userData?["goals"] as? [[String: Any]] {
                         let goals = goalsData.map { FinancialGoalModel(data: $0) }
                         userProfile.goals = goals
+                    }
+                    
+                    
+                    if let plannedBudgetData = userData?["plannedBudget"] as? [String: Double] {
+                        userProfile.plannedBudget = plannedBudgetData
                     }
                     
 
@@ -182,6 +201,7 @@ final class UserManager {
             "personalInfo.profession": userProfile.personalInfo.profession,
             "personalInfo.email": userProfile.personalInfo.email,
             "personalInfo.age": userProfile.personalInfo.age,
+            "personalInfo.profileScore": userProfile.personalInfo.profileScore
         ]
 
         userDocumentRef.updateData(updatedFields) { error in
@@ -244,7 +264,23 @@ final class UserManager {
     }
 
 
-
+    
+    func writeRatings(userProfile: UserProfileInfoModel, adviceId: Int, category: String, rating: Int) {
+         let userDocumentRef = Firestore.firestore().collection("users").document(userProfile.uid)
+         
+         let adviceIdString = String(adviceId)
+         let updatedFields: [String: Any] = [
+             "adviceRatings.\(adviceIdString).\(category)": rating
+         ]
+         
+         userDocumentRef.setData(updatedFields, merge: true) { error in
+             if let error = error {
+                 print("Error updating user document with rating: \(error.localizedDescription)")
+             } else {
+                 print("User document updated successfully with rating.")
+             }
+         }
+     }
 }
 
 
