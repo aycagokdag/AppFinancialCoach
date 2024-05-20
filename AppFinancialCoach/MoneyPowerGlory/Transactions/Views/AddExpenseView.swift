@@ -16,6 +16,8 @@ struct AddExpenseView: View {
     @State private var showingCategorySelection = false
     @State private var showAnomalyDialog = false
     @State private var expenseToAdd: ExpenseModel?
+    @State private var showAnomalyDetail = false
+
     
     
     
@@ -140,8 +142,14 @@ struct AddExpenseView: View {
                         .environmentObject(viewModel)
                 }
             }
-        .confirmationDialog("Warning", isPresented: $showAnomalyDialog, actions: {
+        .fullScreenCover(isPresented: $showAnomalyDetail) {
+            if let expense = expenseToAdd {
+                AnomalyDetailView(expense: expense)
+            }
+        }
+        .confirmationDialog("Anomaly Detected: This expense is unusually high compared to your typical spendings. Would you like to review its impact on your budget?", isPresented: $showAnomalyDialog, actions: {
                         Button("No") {
+                            showAnomalyDetail = true
                             showAnomalyDialog = false
                             amount = ""
                             viewModel.selectedCategory = nil

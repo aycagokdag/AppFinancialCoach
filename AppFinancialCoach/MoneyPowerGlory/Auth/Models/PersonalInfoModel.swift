@@ -2,7 +2,7 @@ import Foundation
 
 struct PersonalInfoModel {
     var profilePhotoURL: URL?
-    var profileScore: Int
+    var profileScore: Double
     var network: [Double] // Friend's IDs
     var name: String
     var profession: String
@@ -10,7 +10,7 @@ struct PersonalInfoModel {
     var age: String
     // Other fields to be added
 
-    init(profilePhotoURL: URL? = nil, profileScore: Int = 0, network: [Double] = [], name: String = "", profession: String = "", email: String, age: String = "") {
+    init(profilePhotoURL: URL? = nil, profileScore: Double = 0, network: [Double] = [], name: String = "", profession: String = "", email: String, age: String = "") {
         self.profilePhotoURL = profilePhotoURL
         self.profileScore = profileScore
         self.network = network

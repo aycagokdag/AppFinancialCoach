@@ -294,11 +294,11 @@ struct ExpenseUpdatesRow: View {
    }
 
    private var arrowImageName: String {
-       expenseDifference > 0 ? "arrow.down" : "arrow.up"
+       expenseDifference > 0 ? "arrow.up" : "arrow.down"
    }
 
    private var arrowColor: Color {
-       expenseDifference > 0 ? .red : .green
+       expenseDifference > 0 ? .green : .red
    }
     
     var body: some View {

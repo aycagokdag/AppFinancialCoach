@@ -56,7 +56,9 @@ struct IncomeRowView: View {
                 .lineLimit(1)
                 .foregroundColor(Color("textColor"))
         }
+        .navigationBarHidden(true)
     }
+    
     
     private func formattedDate() -> String {
         let dateFormatter = DateFormatter()

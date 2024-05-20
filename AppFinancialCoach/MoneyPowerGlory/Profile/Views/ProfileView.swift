@@ -6,7 +6,7 @@ struct ProfileView: View {
     @State private var profession: String = ""
     @State private var email: String = ""
     @State private var age: String = ""
-    @State private var riskToleranceScore: Int?
+    @State private var riskToleranceScore: Double?
 
     @State private var editingName = false
     @State private var editingProfession = false
@@ -14,6 +14,8 @@ struct ProfileView: View {
     @State private var editingAge = false
     @State private var showAlert = false
     @State private var sliderValue: Double = 0.8
+    @State private var showingQuestionnaire = false
+
 
     var body: some View {
         Form {
@@ -45,12 +47,12 @@ struct ProfileView: View {
                     VStack(alignment: .leading){
                         Text("Risk Tolerance Score")
                             .font(.subheadline)
-                        GradientSlider(value: Double(riskToleranceScore!))
+                        GradientSlider(value: (riskToleranceScore! / 10))
                             .padding()
                         HStack {
                            Spacer()
                            Button("Take the test again") {
-                               QuestionnaireView(presentSideMenu: .constant(false))
+                               showingQuestionnaire = true
                            }
                            .foregroundColor(.accentColor)
                            .font(.footnote)
@@ -72,7 +74,7 @@ struct ProfileView: View {
                             .font(.footnote)
                         Spacer()
                         Button("Take the test!"){
-                            QuestionnaireView(presentSideMenu: .constant(false))
+                            showingQuestionnaire = true
                         }
                             .foregroundColor(.accentColor)
                             .font(.footnote)
@@ -107,6 +109,9 @@ struct ProfileView: View {
                 )
             }
         }
+        .sheet(isPresented: $showingQuestionnaire) {
+            QuestionnaireView()
+        }
         .onAppear {
             loadUserData()
         }
@@ -120,6 +125,7 @@ struct ProfileView: View {
             email = currentUser.personalInfo.email
             age = currentUser.personalInfo.age
             riskToleranceScore = currentUser.personalInfo.profileScore
+            print("Loaded riskToleranceScore: \(String(describing: riskToleranceScore))")
         }
     }
 
@@ -189,7 +195,7 @@ private func editableTextField(title: String, value: Binding<String>, editing: B
 }
 
 struct GradientSlider: View {
-    var value: Double // The value should be a normalized number between 0 and 1
+    var value: Double
 
     var body: some View {
         GeometryReader { geometry in
