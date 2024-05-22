@@ -281,6 +281,22 @@ final class UserManager {
              }
          }
      }
+    
+    func updatePlannedBudget(userProfile: UserProfileInfoModel) {
+        let userDocumentRef = Firestore.firestore().collection("users").document(userProfile.uid)
+        
+        let updatedFields: [String: Any] = [
+            "plannedBudget": userProfile.plannedBudget
+        ]
+        
+        userDocumentRef.setData(updatedFields, merge: true) { error in
+            if let error = error {
+                print("Error updating user document with planned budget: \(error.localizedDescription)")
+            } else {
+                print("User document updated successfully with planned budget.")
+            }
+        }
+    }
 }
 
 

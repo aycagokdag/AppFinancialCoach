@@ -192,16 +192,16 @@ struct DonutChartView: View {
             .onChange(of: selectedAmount) { oldValue, newValue in
                 if let newValue {
                     withAnimation {
-                        getSelectedWineType(value: newValue)
+                        getSelectedType(value: newValue)
                     }
                 }
             }
             .padding()
         }
     }
-    private func getSelectedWineType(value: Double) {
+    private func getSelectedType(value: Double) {
         var cumulativeTotal = 0
-        let expenseType = expensesByCategory.first { expenseType in
+        _ = expensesByCategory.first { expenseType in
                   cumulativeTotal += Int(expenseType.amount)
                     if Int(value) <= cumulativeTotal {
                       selectedExpense = expenseType
@@ -219,14 +219,13 @@ struct PredictedExpensesView: View {
     @Binding var savingPerMonth: Double
     @Binding var expenses: [String: Double]
     
-    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
                     Color.white.edgesIgnoringSafeArea(.all)
                     VStack {
-                       VStack {
+                        VStack {
                             if !predictedExpenses.isEmpty {
                                 Text("Planned expense breakdown based on your personal data")
                                     .font(.headline)
@@ -244,26 +243,36 @@ struct PredictedExpensesView: View {
                                 Spacer()
                                 
                                 ForEach(Array(predictedExpenses.enumerated()), id: \.element.key) { index, expense in
-                                    VStack { // Wrap each iteration in a VStack or Group
+                                    VStack {
                                         Divider()
                                         let normalExpenseAmount = expenses[expense.key] ?? 0
-                                        ExpenseUpdatesRow(expenseName: expense.key, expenseAmount: expense.value, normalExpenseAmount: normalExpenseAmount/5)
+                                        ExpenseUpdatesRow(expenseName: expense.key, expenseAmount: expense.value, normalExpenseAmount: normalExpenseAmount / 5)
                                             .padding()
                                     }
                                 }
-
-
 
                                 Text("Monthly savings you'll make with this plan: \(String(format: "%.2f", savingPerMonth))")
                                     .font(.subheadline)
                                     .padding()
                             }
                         }
-                        
-                   
-                        
                     }
                     Spacer()
+                    Button(action: {
+                        savePlan()
+                    }) {
+                        HStack {
+                            Image(systemName: "square.and.arrow.down")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                            Text("Save this plan")
+                                .bold()
+                        }
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .padding(.horizontal)
+                    }
                     Button(action: {
                         isFuturePredictionVisible = false
                     }) {
@@ -283,7 +292,16 @@ struct PredictedExpensesView: View {
             }
         }
     }
+    
+    func savePlan() {
+        if var userProfile = UserManager.shared.currentUser {
+            userProfile.plannedBudget = predictedExpenses
+            UserManager.shared.updatePlannedBudget(userProfile: userProfile)
+        }
+    }
+    
 }
+
 struct ExpenseUpdatesRow: View {
     var expenseName: String
     var expenseAmount: Double
