@@ -212,13 +212,16 @@ struct DonutChartView: View {
        }
 }
 
-
 struct PredictedExpensesView: View {
     @Binding var isFuturePredictionVisible: Bool
     @Binding var predictedExpenses: [String: Double]
     @Binding var savingPerMonth: Double
     @Binding var expenses: [String: Double]
-    
+
+    @State private var adjustedExpenses: [String: Double] = [:]
+    @State private var totalAdjustedExpenses: Double = 0.0
+    @State private var isSaveButtonDisabled: Bool = false
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -236,18 +239,28 @@ struct PredictedExpensesView: View {
                                 let chartData = predictedExpenses.map { name, amount in
                                     ExpenseData(name: name, amount: amount, color: colorForCategory(name))
                                 }
-                                
+
                                 DonutChartView(expensesByCategory: chartData)
                                     .frame(height: 400)
                                     .padding()
                                 Spacer()
-                                
+
+                                let totalPredictedExpenses = predictedExpenses.values.reduce(0, +)
+
                                 ForEach(Array(predictedExpenses.enumerated()), id: \.element.key) { index, expense in
                                     VStack {
                                         Divider()
                                         let normalExpenseAmount = expenses[expense.key] ?? 0
-                                        ExpenseUpdatesRow(expenseName: expense.key, expenseAmount: expense.value, normalExpenseAmount: normalExpenseAmount / 5)
-                                            .padding()
+                                        ExpenseUpdatesRow(
+                                            expenseName: expense.key,
+                                            expenseAmount: expense.value,
+                                            normalExpenseAmount: normalExpenseAmount / 5,
+                                            adjustedExpenses: $adjustedExpenses,
+                                            totalAdjustedExpenses: $totalAdjustedExpenses,
+                                            isSaveButtonDisabled: $isSaveButtonDisabled,
+                                            totalPredictedExpenses: totalPredictedExpenses
+                                        )
+                                        .padding()
                                     }
                                 }
 
@@ -272,6 +285,9 @@ struct PredictedExpensesView: View {
                         .frame(maxWidth: .infinity)
                         .padding()
                         .padding(.horizontal)
+                        .background(isSaveButtonDisabled ? Color.gray : Color.blue)
+                        .cornerRadius(10)
+                        .disabled(isSaveButtonDisabled)
                     }
                     Button(action: {
                         isFuturePredictionVisible = false
@@ -291,73 +307,92 @@ struct PredictedExpensesView: View {
                 }
             }
         }
+        .onAppear {
+            adjustedExpenses = predictedExpenses
+            totalAdjustedExpenses = adjustedExpenses.values.reduce(0, +)
+            isSaveButtonDisabled = totalAdjustedExpenses > predictedExpenses.values.reduce(0, +)
+        }
     }
-    
+
     func savePlan() {
         if var userProfile = UserManager.shared.currentUser {
             userProfile.plannedBudget = predictedExpenses
             UserManager.shared.updatePlannedBudget(userProfile: userProfile)
         }
     }
-    
 }
 
 struct ExpenseUpdatesRow: View {
     var expenseName: String
     var expenseAmount: Double
     var normalExpenseAmount: Double
-    
+    @Binding var adjustedExpenses: [String: Double]
+    @Binding var totalAdjustedExpenses: Double
+    @Binding var isSaveButtonDisabled: Bool
+    var totalPredictedExpenses: Double
+
     private var expenseDifference: Double {
-        expenseAmount - normalExpenseAmount
-   }
+        adjustedExpenses[expenseName, default: expenseAmount] - normalExpenseAmount
+    }
 
-   private var arrowImageName: String {
-       expenseDifference > 0 ? "arrow.up" : "arrow.down"
-   }
+    private var arrowImageName: String {
+        expenseDifference > 0 ? "arrow.up" : "arrow.down"
+    }
 
-   private var arrowColor: Color {
-       expenseDifference > 0 ? .green : .red
-   }
-    
+    private var arrowColor: Color {
+        expenseDifference > 0 ? .green : .red
+    }
+
     var body: some View {
-        HStack {
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(Color.gray.opacity(0.3))
-                .frame(width: 44, height: 44)
-                .overlay {
-                    Image(systemName: imageForCategory(expenseName))
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(colorForCategory(expenseName))
+        VStack {
+            HStack {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(width: 44, height: 44)
+                    .overlay {
+                        Image(systemName: imageForCategory(expenseName))
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(colorForCategory(expenseName))
+                    }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(expenseName)
+                        .font(.subheadline)
+                        .bold()
+                        .lineLimit(1)
+                        .foregroundColor(.black)
+                    HStack {
+                        Text(String(format: "%.2f", expenseDifference))
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                        Image(systemName: arrowImageName)
+                            .foregroundColor(arrowColor)
+                    }
                 }
-            
-            VStack(alignment: .leading, spacing: 4) {
-                Text(expenseName)
-                    .font(.subheadline)
-                    .bold()
+
+                Spacer()
+
+                Text(String(format: "%.2f ₺", adjustedExpenses[expenseName, default: expenseAmount]))
+                    .font(.footnote)
+                    .opacity(0.7)
                     .lineLimit(1)
                     .foregroundColor(.black)
-                HStack {
-                   Text(String(format: "%.2f", expenseDifference))
-                       .font(.subheadline)
-                       .foregroundColor(.black)
-                   Image(systemName: arrowImageName)
-                       .foregroundColor(arrowColor)
-               }
             }
-            
-            Spacer()
-            
-            Text(String(format: "%.2f ₺", expenseAmount))
-                .font(.footnote)
-                .opacity(0.7)
-                .lineLimit(1)
-                .foregroundColor(.black)
-        
+
+            Slider(value: Binding(
+                get: { adjustedExpenses[expenseName, default: expenseAmount] },
+                set: { newValue in
+                    adjustedExpenses[expenseName] = newValue
+                    totalAdjustedExpenses = adjustedExpenses.values.reduce(0, +)
+                    isSaveButtonDisabled = totalAdjustedExpenses > totalPredictedExpenses
+                }
+            ), in: 0...(expenseAmount * 2))
         }
     }
 }
+
 
 extension Color {
     init(hex: String) {
